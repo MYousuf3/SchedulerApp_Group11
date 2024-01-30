@@ -1,11 +1,11 @@
 package com.example.schedulerapp_group11;
 
 public class Exam {
-    String name;
-    String date;
-    String course;
-    String time;
-    String location;
+    private String name;
+    private String date;
+    private String course;
+    private String time;
+    private String location;
 
     public Exam(String n, String d, String c, String t, String l) {
         name = n;

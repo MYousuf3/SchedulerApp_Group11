@@ -1,11 +1,11 @@
 package com.example.schedulerapp_group11;
 
 public class Assignment {
-     private String name;
-     private String classNumber;
-     private String dueDate;
-     private boolean isCompleted;
-     private static int numAssignments = 0;
+    private String name;
+    private String classNumber;
+    private String dueDate;
+    private boolean isCompleted;
+    private static int numAssignments = 0;
 
     public Assignment(String n, String cN, String dD) {
         name = n;

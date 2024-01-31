@@ -28,7 +28,6 @@ public class TodoItem {
     public Comparator<TodoItem> earlyFirst() {
         return (a, b) -> (a.daysTillDue() - b.daysTillDue());
     }
-
     public Comparator<TodoItem> laterFirst() {
         return (a, b) -> (b.daysTillDue() - a.daysTillDue());
     }

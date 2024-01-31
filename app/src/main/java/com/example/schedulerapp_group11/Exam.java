@@ -1,26 +1,25 @@
 package com.example.schedulerapp_group11;
 
+import java.util.Calendar;
+import java.util.Date;
+
 public class Exam {
     private String name;
-    private String date;
+    private Date date;
     private String course;
     private String time;
     private String location;
 
-    public Exam(String n, String d, String c, String t, String l) {
+    public Exam(int year, int month, int day, int hour, int minute, String n, String c, String l) {
         name = n;
-        date = d;
         course = c;
-        time = t;
         location = l;
+
+        Calendar cal = Calendar.getInstance();
+        cal.set(year, month, day, hour, minute);
+        date = cal.getTime();
     }
-    public String getTime() {
-        return time;
-    }
-    public String getCourse() {
-        return course;
-    }
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
@@ -36,16 +35,14 @@ public class Exam {
         this.name = name;
     }
 
-    public void setTime(String time) {
-        this.time = time;
-    }
-
     public void setCourse(String course) {
         this.course = course;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setDate(int year, int month, int day, int hour, int minute) {
+        Calendar cal = Calendar.getInstance();
+        cal.set(year, month, day, hour, minute);
+        date = cal.getTime();
     }
 
     public void setLocation(String location) {

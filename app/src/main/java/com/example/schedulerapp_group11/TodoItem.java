@@ -1,4 +1,5 @@
 package com.example.schedulerapp_group11;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.Calendar;
 import java.util.concurrent.TimeUnit;
@@ -20,5 +21,16 @@ public class TodoItem {
         return (int) TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
     }
 
+    public long getTime() {
+        return due.getTime();
+    }
+
+    public Comparator<TodoItem> earlyFirst() {
+        return (a, b) -> (a.daysTillDue() - b.daysTillDue());
+    }
+
+    public Comparator<TodoItem> laterFirst() {
+        return (a, b) -> (b.daysTillDue() - a.daysTillDue());
+    }
 
 }

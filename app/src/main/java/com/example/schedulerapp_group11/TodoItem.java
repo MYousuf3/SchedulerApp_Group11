@@ -15,6 +15,13 @@ public class TodoItem {
         memo = m;
     }
 
+    public TodoItem(int year, int month, int date, int hour, int minute, String m) {
+        Calendar cal = Calendar.getInstance();
+        cal.set(year, month, date, hour, minute);
+        due = cal.getTime();
+        memo = m;
+    }
+
     public int daysTillDue() {
         Date curr = new Date();
         long diff = Math.min(due.getTime() - curr.getTime(), 0);

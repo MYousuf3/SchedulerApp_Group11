@@ -3,6 +3,16 @@ package com.example.schedulerapp_group11;
 import java.util.Calendar;
 import java.util.Date;
 
+public class Exam extends TodoItem {
+    String courseName;
+    String location;
+    public Exam (int year, int month, int day, int hour, int minute, String examName, String courseName, String location) {
+        super(year, month, day, hour, minute, examName);
+        this.courseName = courseName;
+        this.location = location;
+    }
+}
+/*
 public class Exam {
     private String name;
     private Date date;
@@ -49,3 +59,4 @@ public class Exam {
         this.location = location;
     }
 }
+ */

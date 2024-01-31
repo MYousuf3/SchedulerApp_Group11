@@ -2,14 +2,14 @@ package com.example.schedulerapp_group11;
 
 public class Assignment {
     private String name;
-    private String classNumber;
+    private String course;
     private String dueDate;
     private boolean isCompleted;
     private static int numAssignments = 0;
 
     public Assignment(String n, String cN, String dD) {
         name = n;
-        classNumber = cN;
+        course = cN;
         dueDate = dD;
         isCompleted = false;
         numAssignments++;
@@ -20,7 +20,7 @@ public class Assignment {
     }
 
     public String getClassNumber() {
-        return classNumber;
+        return course;
     }
 
     public String getDueDate() {
@@ -32,7 +32,7 @@ public class Assignment {
     }
 
     public void setClassNumber(String classNumber) {
-        this.classNumber = classNumber;
+        this.course = classNumber;
     }
 
     public static int getNumAssignments() {

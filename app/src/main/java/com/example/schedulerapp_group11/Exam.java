@@ -1,6 +1,7 @@
 package com.example.schedulerapp_group11;
 
 import java.util.Calendar;
+import java.util.Comparator;
 import java.util.Date;
 
 public class Exam extends TodoItem {
@@ -10,6 +11,10 @@ public class Exam extends TodoItem {
         super(year, month, day, hour, minute, examName);
         this.courseName = courseName;
         this.location = location;
+    }
+
+    public Comparator<Exam> sortByCourse() {
+        return (a, b) -> (a.courseName.compareTo(b.courseName));
     }
 }
 /*

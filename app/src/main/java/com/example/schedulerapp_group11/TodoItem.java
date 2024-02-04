@@ -7,12 +7,18 @@ import java.util.concurrent.TimeUnit;
 public class TodoItem {
     private Date due;
     private String memo;
+    private boolean isDone;
 
-    public TodoItem(int year, int month, int date, String m) {
+    public TodoItem(int year, int month, int date, String m, boolean isDone) {
         Calendar cal = Calendar.getInstance();
         cal.set(year, month, date);
         due = cal.getTime();
         memo = m;
+        this.isDone = isDone;
+    }
+
+    public TodoItem(int year, int month, int date, String m) {
+        this(year, month, date, m, false);
     }
 
     public TodoItem(int year, int month, int date, int hour, int minute, String m) {
@@ -28,6 +34,14 @@ public class TodoItem {
         return (int) TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
     }
 
+    public boolean isCompleted() {
+        return isDone;
+    }
+
+    public void toggle() {
+        isDone = !isDone;
+    }
+
     public long getTime() {
         return due.getTime();
     }
@@ -39,5 +53,4 @@ public class TodoItem {
     public Comparator<TodoItem> laterFirst() {
         return (a, b) -> (b.daysTillDue() - a.daysTillDue());
     }
-
 }

@@ -22,7 +22,7 @@ public class TodoItem {
         this(year, month, date, m, false);
     }
 
-    public TodoItem(int year, int month, int date, int hour, int minute, String m) {
+    public TodoItem(int year, int month, int date, int hour, int minute, String m, boolean isDone) {
         Calendar cal = Calendar.getInstance();
         cal.set(year, month, date, hour, minute);
         due = cal.getTime();
@@ -35,13 +35,20 @@ public class TodoItem {
         return (int) TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
     }
 
+    public String getName() {
+        return memo;
+    }
+
     public boolean isCompleted() {
         return isDone;
     }
 
+
     public void toggle() {
         isDone = !isDone;
     }
+
+
 
     public long getTime() {
         return due.getTime();

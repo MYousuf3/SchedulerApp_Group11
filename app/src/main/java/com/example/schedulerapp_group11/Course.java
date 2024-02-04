@@ -1,18 +1,29 @@
 package com.example.schedulerapp_group11;
 
 public class Course {
+
+    private String courseName;
     private String time;
     private String days;
     private String prof;
     private String section;
     private String room;
 
-    public Course(String t, String d, String p, String s, String r) {
+    public Course(String cN, String t, String d, String p, String s, String r) {
+        courseName = cN;
         time = t;
         days = d;
         prof = p;
         section = s;
         room = r;
+    }
+
+    public String getCourseName() {
+        return courseName;
+    }
+
+    public void setCourseName(String courseName) {
+        this.courseName = courseName;
     }
 
     public String getDays() {

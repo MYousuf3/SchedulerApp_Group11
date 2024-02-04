@@ -10,27 +10,32 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class CourseAdapter extends RecyclerView.Adapter<CourseVH> {
 
-    ArrayList<Course> items;
+    ArrayList<Course> courses;
+
+    public CourseAdapter(ArrayList<Course> courses) {
+        this.courses = courses;
+    }
     @NonNull
     @Override
     public CourseVH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.course, parent, false);
-        return null;
+        return new CourseVH(view).linkAdapter(this);
     }
 
     @Override
     public void onBindViewHolder(@NonNull CourseVH holder, int position) {
-
+        holder.courseName.setText(courses.get(position).getCourseName());
     }
 
     @Override
     public int getItemCount() {
-        return items.size();
+        return courses.size();
     }
 }
 class CourseVH extends RecyclerView.ViewHolder{

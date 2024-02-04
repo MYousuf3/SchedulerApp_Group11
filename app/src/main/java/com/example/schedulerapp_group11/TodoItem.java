@@ -10,6 +10,7 @@ public class TodoItem {
     private boolean isDone;
 
     public TodoItem(int year, int month, int date, String m, boolean isDone) {
+        // haha lol
         Calendar cal = Calendar.getInstance();
         cal.set(year, month, date);
         due = cal.getTime();

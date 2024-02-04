@@ -1,5 +1,6 @@
 package com.example.schedulerapp_group11.ui.home;
 
+import android.app.Dialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,10 +17,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.schedulerapp_group11.Course;
 import com.example.schedulerapp_group11.CourseAdapter;
+import com.example.schedulerapp_group11.R;
 import com.example.schedulerapp_group11.databinding.FragmentHomeBinding;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class HomeFragment extends Fragment {
 
@@ -42,10 +45,16 @@ public class HomeFragment extends Fragment {
         CourseAdapter adapter = new CourseAdapter(courses);
         recyclerView.setAdapter(adapter);
 
+        Dialog dialog = new Dialog(inflater.getContext());
+
         FloatingActionButton floatingButton = binding.floatingActionButton;
         floatingButton.setOnClickListener(view -> {
-            courses.add(new Course("Blank", "", "", "", "", ""));
+            courses.add(new Course("CS 2340", "12:30", "MWF", "Pedro", "C", "IC 103"));
             adapter.notifyItemInserted(courses.size() - 1);
+            /*dialog.setContentView(R.layout.dialog);
+            Objects.requireNonNull(dialog.getWindow()).setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            dialog.setCancelable(false);
+            dialog.show();*/
         });
         return root;
     }

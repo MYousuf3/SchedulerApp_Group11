@@ -31,6 +31,12 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseVH> {
     @Override
     public void onBindViewHolder(@NonNull CourseVH holder, int position) {
         holder.courseName.setText(courses.get(position).getCourseName());
+        holder.edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                System.out.println("hi");
+            }
+        });
     }
 
     @Override
@@ -54,9 +60,6 @@ class CourseVH extends RecyclerView.ViewHolder{
         days = itemView.findViewById(R.id.textDays);
         location = itemView.findViewById(R.id.textLocation);
         edit = itemView.findViewById(R.id.editButton);
-        edit.setOnClickListener(view -> {
-
-        });
     }
     public CourseVH linkAdapter(CourseAdapter adapter){
         this.adapter = adapter;

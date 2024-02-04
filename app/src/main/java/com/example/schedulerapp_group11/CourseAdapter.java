@@ -1,13 +1,37 @@
 package com.example.schedulerapp_group11;
 
+import android.text.Layout;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class CourseAdapter {
+import java.util.ArrayList;
+
+public class CourseAdapter extends RecyclerView.Adapter<CourseVH> {
+
+    ArrayList<Course> items;
+    @NonNull
+    @Override
+    public CourseVH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.course, parent, false);
+        return null;
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull CourseVH holder, int position) {
+
+    }
+
+    @Override
+    public int getItemCount() {
+        return items.size();
+    }
 }
 class CourseVH extends RecyclerView.ViewHolder{
 
@@ -28,5 +52,9 @@ class CourseVH extends RecyclerView.ViewHolder{
         edit.setOnClickListener(view -> {
 
         });
+    }
+    public CourseVH linkAdapter(CourseAdapter adapter){
+        this.adapter = adapter;
+        return this;
     }
 }

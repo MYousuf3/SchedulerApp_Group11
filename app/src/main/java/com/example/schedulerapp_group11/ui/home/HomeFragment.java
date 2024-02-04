@@ -34,7 +34,7 @@ public class HomeFragment extends Fragment {
         View root = binding.getRoot();
 
         ArrayList<Course> courses = new ArrayList<Course>();
-        courses.add(new Course("CS 2340", "12:30", "MWF", "Pedro", "C", "IC 103"));
+        //courses.add(new Course("CS 2340", "12:30", "MWF", "Pedro", "C", "IC 103"));
         //final TextView textView = binding.textHome;
         //homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         RecyclerView recyclerView = binding.recyclerView01;

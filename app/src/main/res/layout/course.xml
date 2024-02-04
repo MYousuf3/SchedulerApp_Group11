@@ -17,10 +17,11 @@
             android:id="@+id/textClass"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
             android:layout_marginTop="4dp"
             android:text="Class Name"
             android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.473"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -28,10 +29,11 @@
             android:id="@+id/textProf"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="4dp"
             android:text="Professor"
             android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="@+id/textClass"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textClass" />
 
         <TextView
@@ -56,16 +58,18 @@
 
         <Button
             android:id="@+id/editButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Edit"
+            android:layout_width="66dp"
+            android:layout_height="40dp"
             android:background="@color/black"
             android:backgroundTint="@color/teal_200"
+            android:text="Edit"
+            android:textSize="0sp"
             app:icon="@android:drawable/ic_menu_edit"
             app:layout_constraintBottom_toBottomOf="@+id/textLocation"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.8"
+            app:layout_constraintHorizontal_bias="0.947"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textClass" />
+            app:layout_constraintTop_toTopOf="@+id/textClass"
+            app:layout_constraintVertical_bias="0.623" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

@@ -39,6 +39,10 @@ public class TodoItem {
         return memo;
     }
 
+    public void setName(String name) {
+        memo = name;
+    }
+
     public boolean isCompleted() {
         return isDone;
     }
@@ -48,7 +52,18 @@ public class TodoItem {
         isDone = !isDone;
     }
 
+    public String getDueDate() {
+        return due.toString();
+    }
 
+    public void setDueDate(int year, int month, int date, int hour, int minute) {
+        Calendar cal = Calendar.getInstance();
+        cal.set(year, month, date, hour, minute);
+    }
+
+    public void setDueDate(int year, int month, int date) {
+        setDueDate(year, month, date, 0, 0);
+    }
 
     public long getTime() {
         return due.getTime();

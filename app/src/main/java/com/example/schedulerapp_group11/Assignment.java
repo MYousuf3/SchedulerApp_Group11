@@ -2,35 +2,22 @@ package com.example.schedulerapp_group11;
 
 public class Assignment extends TodoItem {
     private String name;
-    private String course;
+    private String courseName;
     private String dueDate;
 
     public Assignment(int year, int month, int day, int hour, int minute, String title, String courseName, boolean completed) {
         super(year, month, day, hour, minute, title, completed);
-        this.course = courseName;
+        this.courseName = courseName;
     }
 
-    public String getName(){
-        return name;
+    public String getCourse() {
+        return courseName;
     }
 
-    public String getClassNumber() {
-        return course;
+
+    public void setCourse(String className) {
+        this.courseName = className;
     }
 
-    public String getDueDate() {
-        return dueDate;
-    }
 
-    public void setClassNumber(String classNumber) {
-        this.course = classNumber;
-    }
-
-    public void setDueDate(String dueDate) {
-        this.dueDate = dueDate;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 }

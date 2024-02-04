@@ -67,7 +67,7 @@
             android:id="@+id/editButton"
             android:layout_width="66dp"
             android:layout_height="48dp"
-            android:background="@color/black"
+            android:background="@drawable/rounded_corner"
             android:backgroundTint="#000080"
             android:text="Edit"
             android:textSize="0sp"

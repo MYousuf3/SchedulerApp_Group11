@@ -12,6 +12,22 @@ public class Exam extends TodoItem {
         this.courseName = courseName;
         this.location = location;
     }
+    public String getCourse() {
+        return courseName;
+    }
+
+
+    public void setCourse(String className) {
+        this.courseName = className;
+    }
+
+    public String getLocation() {
+        return this.location;
+    }
+
+    public void setLocation(String loc) {
+        this.location = loc;
+    }
 
     public Comparator<Exam> sortByCourse() {
         return (a, b) -> (a.courseName.compareTo(b.courseName));

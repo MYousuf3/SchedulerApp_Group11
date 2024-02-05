@@ -12,6 +12,7 @@ public class Assignment extends TodoItem {
         this.courseName = courseName;
     }
 
+    @Override
     public String getCourse() {
         return courseName;
     }
@@ -21,7 +22,7 @@ public class Assignment extends TodoItem {
         this.courseName = className;
     }
 
-    public Comparator<Assignment> sortByCourse() {
+    public static Comparator<Assignment> sortByCourse() {
         return (a, b) -> (a.courseName.compareTo(b.courseName));
     }
 

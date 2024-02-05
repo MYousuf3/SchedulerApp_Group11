@@ -31,17 +31,19 @@ public class HomeFragment extends Fragment implements CourseAdapter.OnDeleteList
     private FragmentHomeBinding binding;
     ArrayList<Course> courses;
     CourseAdapter adapter;
+    HomeViewModel homeViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        HomeViewModel homeViewModel =
+        homeViewModel =
                 new ViewModelProvider(this).get(HomeViewModel.class);
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-
         courses = new ArrayList<>();
-
+        if (homeViewModel.getSavedCourses() != null) {
+            courses = homeViewModel.getSavedCourses();
+        }
         RecyclerView recyclerView = binding.recyclerView01;
         recyclerView.setLayoutManager(new LinearLayoutManager(inflater.getContext(), LinearLayoutManager.VERTICAL, false));
         adapter = new CourseAdapter(courses);
@@ -79,6 +81,7 @@ public class HomeFragment extends Fragment implements CourseAdapter.OnDeleteList
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+        homeViewModel.setSavedCourses(courses);
         binding = null;
     }
 

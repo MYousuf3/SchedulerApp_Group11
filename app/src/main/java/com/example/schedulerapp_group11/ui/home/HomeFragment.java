@@ -33,6 +33,7 @@ public class HomeFragment extends Fragment implements CourseAdapter.OnDeleteList
     CourseAdapter adapter;
     HomeViewModel homeViewModel;
 
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         homeViewModel =

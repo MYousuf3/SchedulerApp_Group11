@@ -59,9 +59,28 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseVH> {
         holder.delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (onDeleteListener != null) {
-                    onDeleteListener.onDelete(position);
-                }
+                Dialog dialog = new Dialog(viewContext);
+                dialog.setContentView(R.layout.confirmation_dialog);
+                Objects.requireNonNull(dialog.getWindow()).setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                dialog.setCancelable(false);
+                Button confirmButton = dialog.findViewById(R.id.confirmButton);
+                Button cancelButton = dialog.findViewById(R.id.cancelButton);
+                confirmButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (onDeleteListener != null) {
+                            onDeleteListener.onDelete(position);
+                        }
+                        dialog.dismiss();
+                    }
+                });
+                cancelButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
+                dialog.show();
             }
         });
         holder.edit.setOnClickListener(new View.OnClickListener() {

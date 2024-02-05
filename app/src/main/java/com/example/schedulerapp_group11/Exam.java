@@ -32,52 +32,14 @@ public class Exam extends TodoItem {
     public Comparator<Exam> sortByCourse() {
         return (a, b) -> (a.courseName.compareTo(b.courseName));
     }
-}
-/*
-public class Exam {
-    private String name;
-    private Date date;
-    private String course;
-    private String time;
-    private String location;
 
-    public Exam(int year, int month, int day, int hour, int minute, String n, String c, String l) {
-        name = n;
-        course = c;
-        location = l;
+    @Override
+    public boolean equals (Object it) {
+        if (it == null || !this.getClass().equals(it.getClass())) {
+            return false;
+        }
 
-        Calendar cal = Calendar.getInstance();
-        cal.set(year, month, day, hour, minute);
-        date = cal.getTime();
-    }
-    public Date getDate() {
-        return date;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setCourse(String course) {
-        this.course = course;
-    }
-
-    public void setDate(int year, int month, int day, int hour, int minute) {
-        Calendar cal = Calendar.getInstance();
-        cal.set(year, month, day, hour, minute);
-        date = cal.getTime();
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
+        Exam item = (Exam) it;
+        return super.equals(item) && this.courseName.equals(item.courseName) && this.location.equals(item.location);
     }
 }
- */

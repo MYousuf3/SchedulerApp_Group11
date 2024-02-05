@@ -69,11 +69,21 @@ public class TodoItem {
         return due.getTime();
     }
 
-    public Comparator<TodoItem> earlyFirst() {
+    public static Comparator<TodoItem> earlyFirst() {
         return (a, b) -> (a.daysTillDue() - b.daysTillDue());
     }
 
-    public Comparator<TodoItem> laterFirst() {
+    public static Comparator<TodoItem> laterFirst() {
         return (a, b) -> (b.daysTillDue() - a.daysTillDue());
+    }
+
+    @Override
+    public boolean equals (Object it) {
+        if (it == null || !this.getClass().equals(it.getClass())) {
+            return false;
+        }
+
+        TodoItem item = (TodoItem) it;
+        return this.memo.equals(item.memo) && this.due.equals(item.due) && this.isDone == item.isDone;
     }
 }

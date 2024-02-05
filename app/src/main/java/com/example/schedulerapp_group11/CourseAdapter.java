@@ -3,7 +3,6 @@ package com.example.schedulerapp_group11;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +13,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -137,9 +135,9 @@ class CourseVH extends RecyclerView.ViewHolder{
 
     public CourseVH(@NonNull View itemView) {
         super(itemView);
-        courseName = itemView.findViewById(R.id.textClass);
-        professor = itemView.findViewById(R.id.textProf);
-        days = itemView.findViewById(R.id.textDays);
+        courseName = itemView.findViewById(R.id.textItem);
+        professor = itemView.findViewById(R.id.textCourse);
+        days = itemView.findViewById(R.id.textDate);
         location = itemView.findViewById(R.id.textLocation);
         edit = itemView.findViewById(R.id.editButton);
         delete = itemView.findViewById(R.id.deleteButton);

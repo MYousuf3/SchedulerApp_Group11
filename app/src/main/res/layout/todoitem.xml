@@ -17,7 +17,7 @@
         android:backgroundTint="#83ECE6E6">
 
         <TextView
-            android:id="@+id/textClass"
+            android:id="@+id/textItem"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
@@ -31,7 +31,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textProf"
+            android:id="@+id/textCourse"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -39,18 +39,18 @@
             android:text="Course"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textClass" />
+            app:layout_constraintTop_toBottomOf="@+id/textItem" />
 
         <TextView
-            android:id="@+id/textDays"
+            android:id="@+id/textDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:fontFamily="sans-serif-medium"
             android:text="Date"
             android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="@+id/textProf"
-            app:layout_constraintTop_toBottomOf="@+id/textProf" />
+            app:layout_constraintStart_toStartOf="@+id/textCourse"
+            app:layout_constraintTop_toBottomOf="@+id/textCourse" />
 
         <TextView
             android:id="@+id/textLocation"
@@ -60,8 +60,8 @@
             android:fontFamily="sans-serif-medium"
             android:text="Location"
             android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="@+id/textDays"
-            app:layout_constraintTop_toBottomOf="@+id/textDays" />
+            app:layout_constraintStart_toStartOf="@+id/textDate"
+            app:layout_constraintTop_toBottomOf="@+id/textDate" />
 
         <Button
             android:id="@+id/editButton"

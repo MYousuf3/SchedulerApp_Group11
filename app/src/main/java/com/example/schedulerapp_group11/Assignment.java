@@ -1,5 +1,7 @@
 package com.example.schedulerapp_group11;
 
+import java.util.Comparator;
+
 public class Assignment extends TodoItem {
     private String name;
     private String courseName;
@@ -17,6 +19,10 @@ public class Assignment extends TodoItem {
 
     public void setCourse(String className) {
         this.courseName = className;
+    }
+
+    public Comparator<Assignment> sortByCourse() {
+        return (a, b) -> (a.courseName.compareTo(b.courseName));
     }
 
 

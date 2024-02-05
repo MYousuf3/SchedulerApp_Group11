@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:layout_margin="10dp"
+    android:background="#120707"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="5dp"
+    app:contentPadding="10dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="369dp"
+        android:layout_height="140dp"
+        android:background="#000000"
+        android:backgroundTint="#83ECE6E6">
+
+        <TextView
+            android:id="@+id/textClass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/allerta"
+            android:text="To Do Item"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.473"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textProf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="Course"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textClass" />
+
+        <TextView
+            android:id="@+id/textDays"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="Date"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/textProf"
+            app:layout_constraintTop_toBottomOf="@+id/textProf" />
+
+        <TextView
+            android:id="@+id/textLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="Location"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/textDays"
+            app:layout_constraintTop_toBottomOf="@+id/textDays" />
+
+        <Button
+            android:id="@+id/editButton"
+            android:layout_width="67dp"
+            android:layout_height="39dp"
+            android:background="@drawable/rounded_corner"
+            android:backgroundTint="#000080"
+            android:text="Edit"
+            android:textSize="0sp"
+            app:cornerRadius="10dp"
+            app:icon="@android:drawable/ic_menu_edit"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.947"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.277" />
+
+        <Button
+            android:id="@+id/deleteButton"
+            android:layout_width="67dp"
+            android:layout_height="39dp"
+            android:background="@drawable/rounded_corner"
+            app:icon="@android:drawable/ic_menu_delete"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.947"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editButton" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

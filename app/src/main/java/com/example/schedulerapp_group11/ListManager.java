@@ -1,6 +1,7 @@
 package com.example.schedulerapp_group11;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 
 public class ListManager {
     private ArrayList<TodoItem> backing;
@@ -50,6 +51,12 @@ public class ListManager {
                 temp.add(t);
             }
         }
+        // Collections.sort(temp, (a, b) -> a.getCourse().compare(b.getCourse()));
+        Collections.sort(temp, new Comparator<TodoItem>() {
+            public int compare(TodoItem t1, TodoItem t2) {
+                return t1.getCourse().compareTo(t1.getCourse());
+            }
+        });
         return temp;
     }
 }

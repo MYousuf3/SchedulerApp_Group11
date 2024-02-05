@@ -12,6 +12,7 @@ public class Exam extends TodoItem {
         this.courseName = courseName;
         this.location = location;
     }
+    @Override
     public String getCourse() {
         return courseName;
     }
@@ -29,7 +30,7 @@ public class Exam extends TodoItem {
         this.location = loc;
     }
 
-    public Comparator<Exam> sortByCourse() {
+    public static Comparator<Exam> sortByCourse() {
         return (a, b) -> (a.courseName.compareTo(b.courseName));
     }
 

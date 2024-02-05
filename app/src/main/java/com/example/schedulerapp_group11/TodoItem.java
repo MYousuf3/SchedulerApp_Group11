@@ -86,4 +86,8 @@ public class TodoItem {
         TodoItem item = (TodoItem) it;
         return this.memo.equals(item.memo) && this.due.equals(item.due) && this.isDone == item.isDone;
     }
+
+    public String getCourse() {
+        return "";
+    }
 }

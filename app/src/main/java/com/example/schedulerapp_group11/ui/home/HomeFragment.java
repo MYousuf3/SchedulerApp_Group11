@@ -8,10 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -61,9 +59,9 @@ public class HomeFragment extends Fragment implements CourseAdapter.OnDeleteList
             Objects.requireNonNull(dialog.getWindow()).setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
             dialog.setCancelable(false);
             Button saveButton = dialog.findViewById(R.id.saveButton);
-            EditText className = dialog.findViewById(R.id.editTextCourse);
-            EditText prof = dialog.findViewById(R.id.editTextProf);
-            EditText dateText = dialog.findViewById(R.id.editTextDate);
+            EditText className = dialog.findViewById(R.id.editCourseName);
+            EditText prof = dialog.findViewById(R.id.editDateTime);
+            EditText dateText = dialog.findViewById(R.id.editLocation);
             EditText locText = dialog.findViewById(R.id.editTextLoc);
 
             saveButton.setOnClickListener(new View.OnClickListener() {

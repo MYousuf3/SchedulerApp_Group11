@@ -89,9 +89,9 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseVH> {
                 Objects.requireNonNull(dialog.getWindow()).setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                 dialog.setCancelable(false);
                 Button saveButton = dialog.findViewById(R.id.saveButton);
-                EditText className = dialog.findViewById(R.id.editTextCourse);
-                EditText prof = dialog.findViewById(R.id.editTextProf);
-                EditText dateText = dialog.findViewById(R.id.editTextDate);
+                EditText className = dialog.findViewById(R.id.editCourseName);
+                EditText prof = dialog.findViewById(R.id.editDateTime);
+                EditText dateText = dialog.findViewById(R.id.editLocation);
                 EditText locText = dialog.findViewById(R.id.editTextLoc);
                 className.setText(courses.get(position).getCourseName());
                 prof.setText(courses.get(position).getProf());

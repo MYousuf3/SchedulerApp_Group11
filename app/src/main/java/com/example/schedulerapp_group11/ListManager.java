@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class ListManager {
-    ArrayList<TodoItem> backing;
+    private ArrayList<TodoItem> backing;
 
     public ListManager() {
         backing = new ArrayList<>();
@@ -26,5 +26,30 @@ public class ListManager {
         Exam e = new Exam(year, month, day, hour, minute, examName, courseName, location, false);
         backing.add(e);
         Collections.sort(backing, TodoItem.earlyFirst());
+    }
+
+    public void removeItem(TodoItem t) {
+        backing.remove(t);
+    }
+
+    public ArrayList<TodoItem> getIncomplete() {
+        ArrayList<TodoItem> temp = new ArrayList<>();
+        for (TodoItem t : backing) {
+            if (!t.isCompleted()) {
+                temp.add(t);
+            }
+        }
+
+        return temp;
+    }
+
+    public ArrayList<TodoItem> getCourseRelated() {
+        ArrayList<TodoItem> temp = new ArrayList<>();
+        for (TodoItem t : backing) {
+            if (t.getClass() == Assignment.class || t.getClass() == Exam.class) {
+                temp.add(t);
+            }
+        }
+        return temp;
     }
 }

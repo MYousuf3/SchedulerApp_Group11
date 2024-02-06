@@ -55,7 +55,8 @@ public class DashboardFragment extends Fragment implements ItemAdapter.ItemChang
         }
         RecyclerView recyclerView = binding.recyclerViewList;
         recyclerView.setLayoutManager(new LinearLayoutManager(inflater.getContext(), LinearLayoutManager.VERTICAL, false));
-        adapter = new ItemAdapter(list);
+        lm = new ListManager(list);
+        adapter = new ItemAdapter(lm.getList());
         adapter.setOnDeleteListener(this);
         adapter.setItemChangedListener(this);
         recyclerView.setAdapter(adapter);
@@ -63,7 +64,6 @@ public class DashboardFragment extends Fragment implements ItemAdapter.ItemChang
         Spinner spinnerFilter = binding.spinner2;
         Button filter = binding.buttonFilter;
         filterChoice = "";
-        lm = new ListManager(list);
         spinnerFilter.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -79,19 +79,17 @@ public class DashboardFragment extends Fragment implements ItemAdapter.ItemChang
             public void onClick(View v) {
                 if (filterChoice.equals("Course")) {
                     adapter = new ItemAdapter(lm.getCourseRelated());
-                    System.out.println(lm.getCourseRelated());
                     adapter.notifyDataSetChanged();
                     recyclerView.setAdapter(adapter);
                 }
                 if (filterChoice.equals("Incomplete")) {
+                    list = lm.getIncomplete();
                     adapter = new ItemAdapter(lm.getIncomplete());
-                    System.out.println(lm.getIncomplete());
                     adapter.notifyDataSetChanged();
                     recyclerView.setAdapter(adapter);
                 }
                 if (filterChoice.equals("Due Date")) {
-                    adapter = new ItemAdapter(list);
-                    System.out.println(list);
+
                     adapter.notifyDataSetChanged();
                     recyclerView.setAdapter(adapter);
                 }
@@ -132,7 +130,7 @@ public class DashboardFragment extends Fragment implements ItemAdapter.ItemChang
                 @Override
                 public void onClick(View v) {
                     if (choice.equals("Exam")) {
-                        list.add(new Exam(
+                        lm.addExam(
                                 Integer.parseInt(String.valueOf(taskYear.getText())),
                                 Integer.parseInt(String.valueOf(taskMonth.getText())),
                                 Integer.parseInt(String.valueOf(taskDay.getText())),
@@ -140,27 +138,25 @@ public class DashboardFragment extends Fragment implements ItemAdapter.ItemChang
                                 59,
                                 String.valueOf(taskName.getText()),
                                 String.valueOf(courseName.getText()),
-                                String.valueOf(taskLocation.getText()),
-                                false));
+                                String.valueOf(taskLocation.getText())
+                                );
                     } else if (choice.equals("Assignment")) {
-                        list.add(new Assignment(
+                        lm.addAssignment(
                                 Integer.parseInt(String.valueOf(taskYear.getText())),
                                 Integer.parseInt(String.valueOf(taskMonth.getText())),
                                 Integer.parseInt(String.valueOf(taskDay.getText())),
                                 23,
                                 59,
                                 String.valueOf(taskName.getText()),
-                                String.valueOf(courseName.getText()),
-                                false
-                        ));
+                                String.valueOf(courseName.getText())
+                        );
                     } else {
-                        list.add(new TodoItem(
+                        lm.addTask(
                                 Integer.parseInt(String.valueOf(taskYear.getText())),
                                 Integer.parseInt(String.valueOf(taskMonth.getText())),
                                 Integer.parseInt(String.valueOf(taskDay.getText())),
-                                String.valueOf(taskName.getText()),
-                                false
-                                ));
+                                String.valueOf(taskName.getText())
+                        );
                     }
                     adapter.notifyDataSetChanged();
                     dialog.dismiss();
@@ -181,8 +177,7 @@ public class DashboardFragment extends Fragment implements ItemAdapter.ItemChang
     @SuppressLint("NotifyDataSetChanged")
     @Override
     public void onDelete(int position) {
-        System.out.println("tried to remove");
-        list.remove(position);
+        lm.removeItem(position);
         adapter.notifyDataSetChanged();
     }
 

@@ -10,6 +10,10 @@ public class ListManager {
         backing = list;
     }
 
+    public ArrayList<TodoItem> getList(){
+        return backing;
+    }
+
 
     public void addTask(int year, int month, int date, String m) {
         TodoItem t = new TodoItem(year, month, date, m);
@@ -29,8 +33,8 @@ public class ListManager {
         backing.sort(TodoItem.earlyFirst());
     }
 
-    public void removeItem(TodoItem t) {
-        backing.remove(t);
+    public void removeItem(int p) {
+        backing.remove(p);
     }
 
     public ArrayList<TodoItem> getIncomplete() {

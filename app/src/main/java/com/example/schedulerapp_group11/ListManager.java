@@ -5,15 +5,20 @@ import java.util.Comparator;
 
 public class ListManager {
     private ArrayList<TodoItem> backing;
+    private ArrayList<TodoItem> unused;
 
     public ListManager(ArrayList<TodoItem> list) {
         backing = list;
+        unused = new ArrayList<>();
     }
 
     public ArrayList<TodoItem> getList(){
         return backing;
     }
 
+    public void add(ArrayList<TodoItem> list, TodoItem item) {
+        list.add(item);
+    }
 
     public void addTask(int year, int month, int date, String m) {
         TodoItem t = new TodoItem(year, month, date, m);
@@ -39,20 +44,24 @@ public class ListManager {
 
     public ArrayList<TodoItem> getIncomplete() {
         ArrayList<TodoItem> temp = new ArrayList<>();
-        for (TodoItem t : backing) {
-            if (!t.isCompleted()) {
-                temp.add(t);
+        for (int i = 0; i < backing.size(); i++) {
+            if (backing.get(i).isCompleted()) {
+                unused.add(backing.get(i));
+                backing.remove(i);
+                i--;
             }
         }
 
-        return temp;
+        return backing;
     }
 
     public ArrayList<TodoItem> getCourseRelated() {
         ArrayList<TodoItem> temp = new ArrayList<>();
-        for (TodoItem t : backing) {
-            if (t.getClass() == Assignment.class || t.getClass() == Exam.class) {
-                temp.add(t);
+        for (int i = 0; i < backing.size(); i++) {
+            if (backing.get(i).getClass() != Assignment.class && backing.get(i).getClass() != Exam.class) {
+                unused.add(backing.get(i));
+                backing.remove(i);
+                i--;
             }
         }
         // Collections.sort(temp, (a, b) -> a.getCourse().compare(b.getCourse()));
@@ -61,6 +70,14 @@ public class ListManager {
                 return t1.getCourse().compareTo(t1.getCourse());
             }
         });
-        return temp;
+        return backing;
+    }
+    public ArrayList<TodoItem> revert() {
+        for (int i = unused.size() - 1; i >= 0; i--) {
+            backing.add(unused.get(i));
+            unused.remove(i);
+        }
+        backing.sort(TodoItem.earlyFirst());
+        return backing;
     }
 }

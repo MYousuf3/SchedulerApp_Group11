@@ -78,18 +78,17 @@ public class DashboardFragment extends Fragment implements ItemAdapter.ItemChang
             @Override
             public void onClick(View v) {
                 if (filterChoice.equals("Course")) {
-                    adapter = new ItemAdapter(lm.getCourseRelated());
+                    list = lm.getCourseRelated();
                     adapter.notifyDataSetChanged();
                     recyclerView.setAdapter(adapter);
                 }
                 if (filterChoice.equals("Incomplete")) {
                     list = lm.getIncomplete();
-                    adapter = new ItemAdapter(lm.getIncomplete());
                     adapter.notifyDataSetChanged();
                     recyclerView.setAdapter(adapter);
                 }
                 if (filterChoice.equals("Due Date")) {
-
+                    list = lm.revert();
                     adapter.notifyDataSetChanged();
                     recyclerView.setAdapter(adapter);
                 }

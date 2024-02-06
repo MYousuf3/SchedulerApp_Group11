@@ -6,8 +6,8 @@ import java.util.Comparator;
 public class ListManager {
     private ArrayList<TodoItem> backing;
 
-    public ListManager() {
-        backing = new ArrayList<>();
+    public ListManager(ArrayList<TodoItem> list) {
+        backing = list;
     }
 
 
@@ -26,7 +26,7 @@ public class ListManager {
     public void addExam(int year, int month, int day, int hour, int minute, String examName, String courseName, String location) {
         Exam e = new Exam(year, month, day, hour, minute, examName, courseName, location, false);
         backing.add(e);
-        Collections.sort(backing, TodoItem.earlyFirst());
+        backing.sort(TodoItem.earlyFirst());
     }
 
     public void removeItem(TodoItem t) {
@@ -52,7 +52,7 @@ public class ListManager {
             }
         }
         // Collections.sort(temp, (a, b) -> a.getCourse().compare(b.getCourse()));
-        Collections.sort(temp, new Comparator<TodoItem>() {
+        temp.sort(new Comparator<TodoItem>() {
             public int compare(TodoItem t1, TodoItem t2) {
                 return t1.getCourse().compareTo(t1.getCourse());
             }

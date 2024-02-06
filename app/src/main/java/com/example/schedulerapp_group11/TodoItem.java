@@ -46,6 +46,9 @@ public class TodoItem {
     public boolean isCompleted() {
         return isDone;
     }
+    public void setCompleted(boolean newVal){
+        isDone = newVal;
+    }
 
 
     public void toggle() {

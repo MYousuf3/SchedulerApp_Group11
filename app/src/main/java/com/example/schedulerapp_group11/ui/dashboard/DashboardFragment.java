@@ -21,6 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.schedulerapp_group11.Assignment;
 import com.example.schedulerapp_group11.Exam;
 import com.example.schedulerapp_group11.ItemAdapter;
+import com.example.schedulerapp_group11.ListManager;
 import com.example.schedulerapp_group11.R;
 import com.example.schedulerapp_group11.TodoItem;
 import com.example.schedulerapp_group11.databinding.FragmentDashboardBinding;
@@ -37,6 +38,8 @@ public class DashboardFragment extends Fragment implements ItemAdapter.ItemChang
     DashboardViewModel dashboardViewModel;
     ItemAdapter adapter;
     String choice;
+    String filterChoice;
+    ListManager lm;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -56,6 +59,44 @@ public class DashboardFragment extends Fragment implements ItemAdapter.ItemChang
         adapter.setOnDeleteListener(this);
         adapter.setItemChangedListener(this);
         recyclerView.setAdapter(adapter);
+
+        Spinner spinnerFilter = binding.spinner2;
+        Button filter = binding.buttonFilter;
+        filterChoice = "";
+        lm = new ListManager(list);
+        spinnerFilter.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                filterChoice = (String) spinnerFilter.getItemAtPosition(position);
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+        filter.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("NotifyDataSetChanged")
+            @Override
+            public void onClick(View v) {
+                if (filterChoice.equals("Course")) {
+                    adapter = new ItemAdapter(lm.getCourseRelated());
+                    System.out.println(lm.getCourseRelated());
+                    adapter.notifyDataSetChanged();
+                    recyclerView.setAdapter(adapter);
+                }
+                if (filterChoice.equals("Incomplete")) {
+                    adapter = new ItemAdapter(lm.getIncomplete());
+                    System.out.println(lm.getIncomplete());
+                    adapter.notifyDataSetChanged();
+                    recyclerView.setAdapter(adapter);
+                }
+                if (filterChoice.equals("Due Date")) {
+                    adapter = new ItemAdapter(list);
+                    System.out.println(list);
+                    adapter.notifyDataSetChanged();
+                    recyclerView.setAdapter(adapter);
+                }
+            }
+        });
 
         FloatingActionButton floatingButton = binding.floatingActionButton;
         floatingButton.setOnClickListener(view -> {

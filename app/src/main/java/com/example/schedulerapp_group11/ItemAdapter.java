@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -46,23 +47,30 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemVH> {
     @NonNull
     @Override
     public ItemVH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        System.out.println("hi v");
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.todoitem, parent, false);
         viewContext = parent.getContext();
-        System.out.println("hi v");
         return new ItemVH(view).linkAdapter(this);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ItemVH holder, @SuppressLint("RecyclerView") int position) {
-        System.out.println("hi v");
         holder.courseName.setText(list.get(position).getCourse());
         holder.itemName.setText(list.get(position).getName());
         holder.date.setText(list.get(position).getDueDate());
+        holder.checkBox.setChecked(list.get(position).isCompleted());
         if (list.get(position).getClass().equals(Exam.class)) {
             holder.location.setText(((Exam)(list.get(position))).getLocation());
         }
+        holder.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                list.get(position).setCompleted(isChecked);
+                if (itemChangedListener != null) {
+                    itemChangedListener.itemChanged(list);
+                }
+            }
+        });
         holder.delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -145,7 +153,6 @@ class ItemVH extends RecyclerView.ViewHolder{
 
     public ItemVH(@NonNull View itemView) {
         super(itemView);
-        System.out.println("hi v");
         itemName = itemView.findViewById(R.id.textItem);
         courseName = itemView.findViewById(R.id.textCourse);
         date = itemView.findViewById(R.id.textDate);

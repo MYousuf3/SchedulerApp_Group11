@@ -14,4 +14,10 @@
         <item>Task</item>
     </string-array>
 
+    <string-array name="sort_items">
+        <item>Due Date</item>
+        <item>Course</item>
+        <item>Incomplete</item>
+    </string-array>
+
 </resources>

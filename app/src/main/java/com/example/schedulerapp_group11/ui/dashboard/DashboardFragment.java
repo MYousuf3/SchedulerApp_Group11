@@ -62,21 +62,12 @@ public class DashboardFragment extends Fragment implements ItemAdapter.ItemChang
         recyclerView.setAdapter(adapter);
 
         Spinner spinnerFilter = binding.spinner2;
-        Button filter = binding.buttonFilter;
         filterChoice = "";
         spinnerFilter.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 filterChoice = (String) spinnerFilter.getItemAtPosition(position);
-            }
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
-        });
-        filter.setOnClickListener(new View.OnClickListener() {
-            @SuppressLint("NotifyDataSetChanged")
-            @Override
-            public void onClick(View v) {
                 if (filterChoice.equals("Course")) {
                     list = lm.getCourseRelated();
                     adapter.notifyDataSetChanged();
@@ -92,6 +83,9 @@ public class DashboardFragment extends Fragment implements ItemAdapter.ItemChang
                     adapter.notifyDataSetChanged();
                     recyclerView.setAdapter(adapter);
                 }
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
             }
         });
 

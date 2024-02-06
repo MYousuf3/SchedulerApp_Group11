@@ -11,6 +11,7 @@
     app:contentPadding="10dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cLayout"
         android:layout_width="369dp"
         android:layout_height="140dp"
         android:background="#000000"

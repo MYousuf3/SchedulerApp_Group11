@@ -3,6 +3,7 @@ package com.example.schedulerapp_group11;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -59,9 +61,18 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemVH> {
         holder.itemName.setText(list.get(position).getName());
         holder.date.setText(list.get(position).getDueDate());
         holder.checkBox.setChecked(list.get(position).isCompleted());
+        /*
+        if (list.get(position).getClass() == Exam.class) {
+            holder.constraintLayout.setBackgroundColor(Color.RED);
+        }
+        else if (list.get(position).getClass() == Assignment.class) {
+            holder.constraintLayout.setBackgroundColor(Color.BLUE);
+        }else {
+            holder.constraintLayout.setBackgroundColor(Color.GREEN);
+        }
         if (list.get(position).getClass().equals(Exam.class)) {
             holder.location.setText(((Exam)(list.get(position))).getLocation());
-        }
+        }*/
         holder.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -229,6 +240,7 @@ class ItemVH extends RecyclerView.ViewHolder{
     Button edit;
     Button delete;
     CheckBox checkBox;
+    ConstraintLayout constraintLayout;
     private ItemAdapter adapter;
 
     public ItemVH(@NonNull View itemView) {
@@ -240,6 +252,7 @@ class ItemVH extends RecyclerView.ViewHolder{
         edit = itemView.findViewById(R.id.editButton);
         delete = itemView.findViewById(R.id.deleteButton);
         checkBox = itemView.findViewById(R.id.completedBox);
+        constraintLayout = itemView.findViewById(R.id.cLayout);
     }
     public ItemVH linkAdapter(ItemAdapter adapter){
         this.adapter = adapter;

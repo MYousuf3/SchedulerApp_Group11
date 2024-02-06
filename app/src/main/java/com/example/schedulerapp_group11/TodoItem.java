@@ -10,11 +10,17 @@ public class TodoItem {
     private boolean isDone;
     int hour;
     int minute;
+    int year;
+    int month;
+    int day;
 
     public TodoItem(int year, int month, int date, String m, boolean isDone) {
         // haha lol
         Calendar cal = Calendar.getInstance();
-        cal.set(year, month, date);
+        cal.set(year, month - 1, date);
+        this.year = year;
+        this.month = month;
+        this.day = date;
         due = cal.getTime();
         memo = m;
         this.isDone = isDone;
@@ -31,6 +37,38 @@ public class TodoItem {
         this.minute = minute;
         due = cal.getTime();
         memo = m;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+    public int getMonth() {
+        return month;
+    }
+
+    public void setMonth(int month) {
+        this.month = month;
+    }
+
+    public int getDay() {
+        return day;
+    }
+
+    public void setDay(int day) {
+        this.day = day;
+    }
+
+    public int getMinute() {
+        return minute;
+    }
+
+    public void setMinute(int minute) {
+        this.minute = minute;
     }
 
     public int daysTillDue() {
@@ -66,6 +104,7 @@ public class TodoItem {
     public void setDueDate(int year, int month, int date, int hour, int minute) {
         Calendar cal = Calendar.getInstance();
         cal.set(year, month, date, hour, minute);
+        due = cal.getTime();
     }
 
     public void setDueDate(int year, int month, int date) {

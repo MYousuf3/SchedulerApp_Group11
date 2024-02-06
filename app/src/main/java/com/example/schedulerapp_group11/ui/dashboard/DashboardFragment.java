@@ -133,7 +133,7 @@ public class DashboardFragment extends Fragment implements ItemAdapter.ItemChang
                     if (choice.equals("Exam")) {
                         lm.addExam(
                                 Integer.parseInt(String.valueOf(taskYear.getText())),
-                                Integer.parseInt(String.valueOf(taskMonth.getText())) - 1,
+                                Integer.parseInt(String.valueOf(taskMonth.getText())),
                                 Integer.parseInt(String.valueOf(taskDay.getText())),
                                 Integer.parseInt(String.valueOf(taskHour.getText())),
                                 Integer.parseInt(String.valueOf(taskMinute.getText())),

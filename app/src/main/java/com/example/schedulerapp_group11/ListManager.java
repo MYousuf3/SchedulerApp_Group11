@@ -43,6 +43,7 @@ public class ListManager {
     }
 
     public ArrayList<TodoItem> getIncomplete() {
+        revert();
         ArrayList<TodoItem> temp = new ArrayList<>();
         for (int i = 0; i < backing.size(); i++) {
             if (backing.get(i).isCompleted()) {
@@ -56,6 +57,7 @@ public class ListManager {
     }
 
     public ArrayList<TodoItem> getCourseRelated() {
+        revert();
         // ArrayList<TodoItem> temp = new ArrayList<>();
         for (int i = 0; i < backing.size(); i++) {
             if (backing.get(i).getClass() != Assignment.class && backing.get(i).getClass() != Exam.class) {

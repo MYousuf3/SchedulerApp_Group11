@@ -7,7 +7,6 @@ import java.util.Date;
 public class Exam extends TodoItem {
     String courseName;
     String location;
-
     int hour;
     int minute;
     public Exam (int year, int month, int day, int hour, int minute, String examName, String courseName, String location, boolean isCompleted) {

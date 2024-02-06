@@ -3,6 +3,7 @@ package com.example.schedulerapp_group11;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -59,9 +61,18 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemVH> {
         holder.itemName.setText(list.get(position).getName());
         holder.date.setText(list.get(position).getDueDate());
         holder.checkBox.setChecked(list.get(position).isCompleted());
+        /*
+        if (list.get(position).getClass() == Exam.class) {
+            holder.constraintLayout.setBackgroundColor(Color.RED);
+        }
+        else if (list.get(position).getClass() == Assignment.class) {
+            holder.constraintLayout.setBackgroundColor(Color.BLUE);
+        }else {
+            holder.constraintLayout.setBackgroundColor(Color.GREEN);
+        }
         if (list.get(position).getClass().equals(Exam.class)) {
             holder.location.setText(((Exam)(list.get(position))).getLocation());
-        }
+        }*/
         holder.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -120,16 +131,27 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemVH> {
                     taskLocation.setText(list.get(position).getCourse());
                     taskHour.setText(String.valueOf(((Exam)list.get(position)).getHour()));
                     taskMinute.setText(String.valueOf(((Exam)list.get(position)).getMinute()));
+                    taskDay.setText(String.valueOf((list.get(position)).getDay()));
+                    taskMonth.setText(String.valueOf((list.get(position)).getMonth()));
+                    taskYear.setText(String.valueOf((list.get(position)).getYear()));
                     saveButton.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
                             Exam change = (Exam)list.get(position);
                             change.setName(taskName.getText().toString());
                             change.setCourse(courseName.getText().toString());
-                            change.setDueDate(Integer.parseInt(String.valueOf(taskYear.getText())), Integer.parseInt(String.valueOf(taskMonth.getText())), Integer.parseInt(String.valueOf(taskDay.getText())));
+                            change.setDueDate(Integer.parseInt(String.valueOf(taskYear.getText())),
+                                    Integer.parseInt(String.valueOf(taskMonth.getText())),
+                                    Integer.parseInt(String.valueOf(taskDay.getText())),
+                                    Integer.parseInt(String.valueOf(taskHour.getText())),
+                                    Integer.parseInt(String.valueOf(taskMinute.getText())));
                             change.setLocation(taskLocation.getText().toString());
                             change.setHour(Integer.parseInt(taskHour.getText().toString()));
                             change.setMinute(Integer.parseInt(taskMinute.getText().toString()));
+                            change.setMonth(Integer.parseInt(taskMonth.getText().toString()));
+                            change.setDay(Integer.parseInt(taskDay.getText().toString()));
+                            change.setYear(Integer.parseInt(taskYear.getText().toString()));
+
 
                             if (itemChangedListener != null) {
                                 itemChangedListener.itemChanged(list);
@@ -149,6 +171,9 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemVH> {
                     EditText taskYear = dialog.findViewById(R.id.editYearText);
                     taskName.setText(list.get(position).getName());
                     courseName.setText(list.get(position).getCourse());
+                    taskDay.setText(String.valueOf((list.get(position)).getDay()));
+                    taskMonth.setText(String.valueOf((list.get(position)).getMonth()));
+                    taskYear.setText(String.valueOf((list.get(position)).getYear()));
                     saveButton.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -156,6 +181,9 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemVH> {
                             change.setName(taskName.getText().toString());
                             change.setCourse(courseName.getText().toString());
                             change.setDueDate(Integer.parseInt(String.valueOf(taskYear.getText())), Integer.parseInt(String.valueOf(taskMonth.getText())), Integer.parseInt(String.valueOf(taskDay.getText())));
+                            change.setMonth(Integer.parseInt(taskMonth.getText().toString()));
+                            change.setDay(Integer.parseInt(taskDay.getText().toString()));
+                            change.setYear(Integer.parseInt(taskYear.getText().toString()));
                             if (itemChangedListener != null) {
                                 itemChangedListener.itemChanged(list);
                             }
@@ -171,6 +199,9 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemVH> {
                     EditText taskMonth = dialog.findViewById(R.id.editMonth);
                     EditText taskDay = dialog.findViewById(R.id.editDay);
                     EditText taskYear = dialog.findViewById(R.id.editYearText);
+                    taskDay.setText(String.valueOf((list.get(position)).getDay()));
+                    taskMonth.setText(String.valueOf((list.get(position)).getMonth()));
+                    taskYear.setText(String.valueOf((list.get(position)).getYear()));
                     taskName.setText(list.get(position).getName());
 
                     saveButton.setOnClickListener(new View.OnClickListener() {
@@ -179,7 +210,9 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemVH> {
                             TodoItem change = list.get(position);
                             change.setName(taskName.getText().toString());
                             change.setDueDate(Integer.parseInt(String.valueOf(taskYear.getText())), Integer.parseInt(String.valueOf(taskMonth.getText())), Integer.parseInt(String.valueOf(taskDay.getText())));
-
+                            change.setMonth(Integer.parseInt(taskMonth.getText().toString()));
+                            change.setDay(Integer.parseInt(taskDay.getText().toString()));
+                            change.setYear(Integer.parseInt(taskYear.getText().toString()));
                             if (itemChangedListener != null) {
                                 itemChangedListener.itemChanged(list);
                             }
@@ -207,6 +240,7 @@ class ItemVH extends RecyclerView.ViewHolder{
     Button edit;
     Button delete;
     CheckBox checkBox;
+    ConstraintLayout constraintLayout;
     private ItemAdapter adapter;
 
     public ItemVH(@NonNull View itemView) {
@@ -218,6 +252,7 @@ class ItemVH extends RecyclerView.ViewHolder{
         edit = itemView.findViewById(R.id.editButton);
         delete = itemView.findViewById(R.id.deleteButton);
         checkBox = itemView.findViewById(R.id.completedBox);
+        constraintLayout = itemView.findViewById(R.id.cLayout);
     }
     public ItemVH linkAdapter(ItemAdapter adapter){
         this.adapter = adapter;

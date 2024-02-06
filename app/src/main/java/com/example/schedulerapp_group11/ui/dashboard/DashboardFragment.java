@@ -62,21 +62,12 @@ public class DashboardFragment extends Fragment implements ItemAdapter.ItemChang
         recyclerView.setAdapter(adapter);
 
         Spinner spinnerFilter = binding.spinner2;
-        Button filter = binding.buttonFilter;
         filterChoice = "";
         spinnerFilter.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 filterChoice = (String) spinnerFilter.getItemAtPosition(position);
-            }
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
-        });
-        filter.setOnClickListener(new View.OnClickListener() {
-            @SuppressLint("NotifyDataSetChanged")
-            @Override
-            public void onClick(View v) {
                 if (filterChoice.equals("Course")) {
                     list = lm.getCourseRelated();
                     adapter.notifyDataSetChanged();
@@ -92,6 +83,9 @@ public class DashboardFragment extends Fragment implements ItemAdapter.ItemChang
                     adapter.notifyDataSetChanged();
                     recyclerView.setAdapter(adapter);
                 }
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
             }
         });
 
@@ -133,7 +127,7 @@ public class DashboardFragment extends Fragment implements ItemAdapter.ItemChang
                     if (choice.equals("Exam")) {
                         lm.addExam(
                                 Integer.parseInt(String.valueOf(taskYear.getText())),
-                                Integer.parseInt(String.valueOf(taskMonth.getText())) - 1,
+                                Integer.parseInt(String.valueOf(taskMonth.getText())),
                                 Integer.parseInt(String.valueOf(taskDay.getText())),
                                 Integer.parseInt(String.valueOf(taskHour.getText())),
                                 Integer.parseInt(String.valueOf(taskMinute.getText())),

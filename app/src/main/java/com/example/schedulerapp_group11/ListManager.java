@@ -98,7 +98,7 @@ public class ListManager {
     public ArrayList<TodoItem> getTasks() {
         ArrayList<TodoItem> temp = new ArrayList<>();
         for (int i = 0; i < backing.size(); i++) {
-            if (backing.get(i).getClass() != Exam.class && backing.get(i).getClass() != Assignment.class) {
+            if (backing.get(i).getClass() == Exam.class || backing.get(i).getClass() == Assignment.class) {
                 unused.add(backing.get(i));
                 backing.remove(i);
                 i--;

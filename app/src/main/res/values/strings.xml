@@ -22,6 +22,10 @@
         <item>Due Date</item>
         <item>Course</item>
         <item>Incomplete</item>
+        <item>Complete</item>
+        <item>Tasks</item>
+        <item>Assignments</item>
+        <item>Exams</item>
     </string-array>
 
 </resources>

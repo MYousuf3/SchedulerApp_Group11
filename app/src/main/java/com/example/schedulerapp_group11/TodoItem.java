@@ -8,6 +8,8 @@ public class TodoItem {
     private Date due;
     private String memo;
     private boolean isDone;
+    int hour;
+    int minute;
 
     public TodoItem(int year, int month, int date, String m, boolean isDone) {
         // haha lol
@@ -22,9 +24,11 @@ public class TodoItem {
         this(year, month, date, m, false);
     }
 
-    public TodoItem(int year, int month, int date, int hour, int minute, String m, boolean isDone) {
+    public TodoItem(int year, int month, int date, int hour, int minute, String m) {
         Calendar cal = Calendar.getInstance();
         cal.set(year, month, date, hour, minute);
+        this.hour = hour;
+        this.minute = minute;
         due = cal.getTime();
         memo = m;
     }
@@ -65,7 +69,7 @@ public class TodoItem {
     }
 
     public void setDueDate(int year, int month, int date) {
-        setDueDate(year, month, date, 0, 0);
+        setDueDate(year, month, date, hour, minute);
     }
 
     public long getTime() {

@@ -33,14 +33,48 @@
 
     <EditText
         android:id="@+id/editDateTime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
+        android:layout_width="36dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="4dp"
         android:ems="10"
-        android:hint="Time(if applicable)"
+        android:hint="hh"
         android:inputType="text"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/editCourseName"
-        app:layout_constraintTop_toBottomOf="@+id/editCourseName" />
+        app:layout_constraintTop_toTopOf="@+id/taskView"
+        app:layout_constraintVertical_bias="0.278" />
+
+    <TextView
+
+        android:id="@+id/colon"
+        android:layout_width="10dp"
+        android:layout_height="36dp"
+        android:text="@string/colon"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/minute"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/minute"
+        app:layout_constraintTop_toTopOf="@+id/taskView"
+        app:layout_constraintVertical_bias="0.278"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/minute"
+        android:layout_width="36dp"
+        android:layout_height="37dp"
+        android:layout_marginEnd="280dp"
+        android:ems="10"
+        android:hint="mm"
+        android:inputType="text"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.358"
+        app:layout_constraintStart_toEndOf="@+id/editDateTime"
+        app:layout_constraintTop_toTopOf="@+id/taskView"
+        app:layout_constraintVertical_bias="0.278" />
 
     <EditText
         android:id="@+id/editLocation"
@@ -84,10 +118,10 @@
         android:id="@+id/editMonth"
         android:layout_width="39dp"
         android:layout_height="45dp"
+        android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="mm"
         android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/editDateTime"
         app:layout_constraintStart_toStartOf="@+id/editCourseName"
         app:layout_constraintTop_toBottomOf="@+id/editCourseName" />
 
@@ -99,18 +133,8 @@
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/editDateTime"
         app:layout_constraintStart_toEndOf="@+id/editMonth"
-        app:layout_constraintTop_toBottomOf="@+id/editCourseName" />
-
-    <EditText
-        android:id="@+id/editDay"
-        android:layout_width="39dp"
-        android:layout_height="45dp"
-        android:ems="10"
-        android:hint="dd"
-        android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/editDateTime"
-        app:layout_constraintStart_toEndOf="@+id/slash1"
-        app:layout_constraintTop_toBottomOf="@+id/editCourseName" />
+        app:layout_constraintTop_toBottomOf="@+id/editCourseName"
+        app:layout_constraintVertical_bias="0.651" />
 
     <TextView
         android:id="@+id/textView2"
@@ -120,18 +144,34 @@
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/editDateTime"
         app:layout_constraintStart_toEndOf="@+id/editDay"
-        app:layout_constraintTop_toBottomOf="@+id/editCourseName" />
+        app:layout_constraintTop_toBottomOf="@+id/editCourseName"
+        app:layout_constraintVertical_bias="0.674" />
 
     <EditText
         android:id="@+id/editYearText"
         android:layout_width="48dp"
         android:layout_height="49dp"
+        android:layout_marginTop="12dp"
         android:ems="10"
         android:hint="yyyy"
         android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/editDateTime"
+        app:layout_constraintBottom_toTopOf="@+id/minute"
         app:layout_constraintStart_toEndOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/editCourseName" />
+        app:layout_constraintTop_toBottomOf="@+id/editCourseName"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
+        android:id="@+id/editDay"
+        android:layout_width="39dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="dd"
+        android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@+id/minute"
+        app:layout_constraintStart_toEndOf="@+id/slash1"
+        app:layout_constraintTop_toBottomOf="@+id/editCourseName"
+        app:layout_constraintVertical_bias="0.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

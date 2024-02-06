@@ -22,13 +22,13 @@
         android:id="@+id/saveButton"
         android:layout_width="62dp"
         android:layout_height="62dp"
-        android:layout_marginBottom="492dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/rounded_corner"
         app:icon="@android:drawable/ic_menu_save"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/taskView"
         app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toStartOf="@+id/taskView" />
+        app:layout_constraintStart_toStartOf="@+id/taskView"
+        app:layout_constraintTop_toBottomOf="@+id/editDay" />
 
     <EditText
         android:id="@+id/editDay"
@@ -38,21 +38,24 @@
         android:hint="dd"
         android:inputType="text"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/editYearText"
+        app:layout_constraintHorizontal_bias="0.855"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.128"
-        tools:layout_editor_absoluteX="74dp" />
+        app:layout_constraintVertical_bias="0.128" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
         android:text="/"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/editDay"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.244"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.145" />
+        app:layout_constraintVertical_bias="0.144" />
 
     <EditText
         android:id="@+id/editMonth"
@@ -62,9 +65,11 @@
         android:hint="mm"
         android:inputType="text"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/editDay"
+        app:layout_constraintHorizontal_bias="0.033"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.124"
-        tools:layout_editor_absoluteX="16dp" />
+        app:layout_constraintVertical_bias="0.124" />
 
     <EditText
         android:id="@+id/editYearText"
@@ -74,9 +79,11 @@
         android:hint="yyyy"
         android:inputType="text"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.297"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.123"
-        tools:layout_editor_absoluteX="126dp" />
+        app:layout_constraintVertical_bias="0.129" />
 
     <TextView
         android:id="@+id/slash1"
@@ -87,6 +94,8 @@
         android:text="/"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/editDay"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/editMonth"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.146" />

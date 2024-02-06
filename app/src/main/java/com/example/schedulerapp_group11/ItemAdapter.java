@@ -110,13 +110,16 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemVH> {
                     EditText taskName = dialog.findViewById(R.id.taskView);
                     EditText courseName = dialog.findViewById(R.id.editCourseName);
                     EditText taskLocation = dialog.findViewById(R.id.editLocation);
-                    EditText taskTime = dialog.findViewById(R.id.editDateTime);
+                    EditText taskHour = dialog.findViewById(R.id.editDateTime);
+                    EditText taskMinute = dialog.findViewById(R.id.minute);
                     EditText taskMonth = dialog.findViewById(R.id.editMonth);
                     EditText taskDay = dialog.findViewById(R.id.editDay);
                     EditText taskYear = dialog.findViewById(R.id.editYearText);
                     taskName.setText(list.get(position).getName());
                     courseName.setText(list.get(position).getCourse());
                     taskLocation.setText(list.get(position).getCourse());
+                    taskHour.setText(String.valueOf(((Exam)list.get(position)).getHour()));
+                    taskMinute.setText(String.valueOf(((Exam)list.get(position)).getMinute()));
                     saveButton.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -125,6 +128,9 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemVH> {
                             change.setCourse(courseName.getText().toString());
                             change.setDueDate(Integer.parseInt(String.valueOf(taskYear.getText())), Integer.parseInt(String.valueOf(taskMonth.getText())), Integer.parseInt(String.valueOf(taskDay.getText())));
                             change.setLocation(taskLocation.getText().toString());
+                            change.setHour(Integer.parseInt(taskHour.getText().toString()));
+                            change.setMinute(Integer.parseInt(taskMinute.getText().toString()));
+
                             if (itemChangedListener != null) {
                                 itemChangedListener.itemChanged(list);
                             }

@@ -7,15 +7,30 @@ import java.util.Date;
 public class Exam extends TodoItem {
     String courseName;
     String location;
+
+    int hour;
+    int minute;
     public Exam (int year, int month, int day, int hour, int minute, String examName, String courseName, String location, boolean isCompleted) {
-        super(year, month, day, hour, minute, examName, isCompleted);
+        super(year, month, day, hour, minute, examName);
         this.courseName = courseName;
         this.location = location;
+        this.hour = hour;
+        this.minute = minute;
     }
     @Override
     public String getCourse() {
         return courseName;
     }
+
+    public int getHour() {
+        return hour;
+    }
+
+    public void setHour(int hour) {this.hour = hour;}
+
+    public int getMinute(){return minute;}
+
+    public void setMinute(int minute) {this.minute = minute;}
 
 
     public void setCourse(String className) {

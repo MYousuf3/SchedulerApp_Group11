@@ -106,10 +106,12 @@ public class DashboardFragment extends Fragment implements ItemAdapter.ItemChang
             EditText taskName = dialog.findViewById(R.id.taskView);
             EditText courseName = dialog.findViewById(R.id.editCourseName);
             EditText taskLocation = dialog.findViewById(R.id.editLocation);
-            EditText taskTime = dialog.findViewById(R.id.editDateTime);
+            EditText taskHour = dialog.findViewById(R.id.editDateTime);
+            EditText taskMinute = dialog.findViewById(R.id.minute);
             EditText taskMonth = dialog.findViewById(R.id.editMonth);
             EditText taskDay = dialog.findViewById(R.id.editDay);
             EditText taskYear = dialog.findViewById(R.id.editYearText);
+
             Spinner spinner = dialog.findViewById(R.id.spinner);
             choice = "";
             spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -131,10 +133,10 @@ public class DashboardFragment extends Fragment implements ItemAdapter.ItemChang
                     if (choice.equals("Exam")) {
                         lm.addExam(
                                 Integer.parseInt(String.valueOf(taskYear.getText())),
-                                Integer.parseInt(String.valueOf(taskMonth.getText())),
+                                Integer.parseInt(String.valueOf(taskMonth.getText())) - 1,
                                 Integer.parseInt(String.valueOf(taskDay.getText())),
-                                23,
-                                59,
+                                Integer.parseInt(String.valueOf(taskHour.getText())),
+                                Integer.parseInt(String.valueOf(taskMinute.getText())),
                                 String.valueOf(taskName.getText()),
                                 String.valueOf(courseName.getText()),
                                 String.valueOf(taskLocation.getText())

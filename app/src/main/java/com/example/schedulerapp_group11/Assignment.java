@@ -8,7 +8,7 @@ public class Assignment extends TodoItem {
     private String dueDate;
 
     public Assignment(int year, int month, int day, int hour, int minute, String title, String courseName, boolean completed) {
-        super(year, month, day, hour, minute, title, completed);
+        super(year, month, day, hour, minute, title);
         this.courseName = courseName;
     }
 

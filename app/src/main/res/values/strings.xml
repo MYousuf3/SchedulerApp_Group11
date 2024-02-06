@@ -7,6 +7,10 @@
     <string name="class_name">Class Name</string>
     <string name="cancel">Cancel</string>
     <string name="confirm">Confirm</string>
+    <string name="minute">minute</string>
+    <string name="location_if_applicable">Location (if applicable)</string>
+    <string name="colon">:</string>
+    <string name="minutes">minute</string>
 
     <string-array name="spinner_items">
         <item>Exam</item>

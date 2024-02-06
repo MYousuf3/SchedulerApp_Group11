@@ -57,6 +57,7 @@ public class ListManager {
     }
 
     public ArrayList<TodoItem> getComplete() {
+        revert();
         ArrayList<TodoItem> temp = new ArrayList<>();
         for (int i = 0; i < backing.size(); i++) {
             if (!backing.get(i).isCompleted()) {
@@ -70,6 +71,7 @@ public class ListManager {
     }
 
     public ArrayList<TodoItem> getAssignments() {
+        revert();
         ArrayList<TodoItem> temp = new ArrayList<>();
         for (int i = 0; i < backing.size(); i++) {
             if (backing.get(i).getClass() != Assignment.class) {
@@ -83,6 +85,7 @@ public class ListManager {
     }
 
     public ArrayList<TodoItem> getExams() {
+        revert();
         ArrayList<TodoItem> temp = new ArrayList<>();
         for (int i = 0; i < backing.size(); i++) {
             if (backing.get(i).getClass() != Exam.class) {
@@ -96,6 +99,7 @@ public class ListManager {
     }
 
     public ArrayList<TodoItem> getTasks() {
+        revert();
         ArrayList<TodoItem> temp = new ArrayList<>();
         for (int i = 0; i < backing.size(); i++) {
             if (backing.get(i).getClass() == Exam.class || backing.get(i).getClass() == Assignment.class) {

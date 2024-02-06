@@ -15,7 +15,6 @@ public class TodoItem {
     int day;
 
     public TodoItem(int year, int month, int date, String m, boolean isDone) {
-        // haha lol
         Calendar cal = Calendar.getInstance();
         cal.set(year, month - 1, date);
         this.year = year;
@@ -32,7 +31,7 @@ public class TodoItem {
 
     public TodoItem(int year, int month, int date, int hour, int minute, String m) {
         Calendar cal = Calendar.getInstance();
-        cal.set(year, month, date, hour, minute);
+        cal.set(year, month - 1, date, hour, minute);
         this.hour = hour;
         this.minute = minute;
         due = cal.getTime();

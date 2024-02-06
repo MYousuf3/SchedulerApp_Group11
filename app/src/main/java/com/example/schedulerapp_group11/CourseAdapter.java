@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -104,14 +105,21 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseVH> {
                 saveButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Course change = courses.get(position);
-                        change.setCourseName(className.getText().toString());
-                        change.setProf(prof.getText().toString());
-                        change.setTime(dateText.getText().toString());
-                        change.setRoom(locText.getText().toString());
-                        courses.set(position, change);
-                        if (itemChangedListener != null) {
-                            itemChangedListener.itemChanged(courses);
+                        if (String.valueOf(className.getText()).equals("") ||
+                                String.valueOf(prof.getText()).equals("") ||
+                                String.valueOf(dateText.getText()).equals("") ||
+                                String.valueOf(locText.getText()).equals("")) {
+                            Toast.makeText(viewContext, "Invalid Entry", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Course change = courses.get(position);
+                            change.setCourseName(className.getText().toString());
+                            change.setProf(prof.getText().toString());
+                            change.setTime(dateText.getText().toString());
+                            change.setRoom(locText.getText().toString());
+                            courses.set(position, change);
+                            if (itemChangedListener != null) {
+                                itemChangedListener.itemChanged(courses);
+                            }
                         }
                         dialog.dismiss();
                     }

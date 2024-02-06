@@ -65,14 +65,16 @@
 
         <Button
             android:id="@+id/editButton"
-            android:layout_width="44dp"
-            android:layout_height="27dp"
+            android:layout_width="43dp"
+            android:layout_height="33dp"
             android:background="@drawable/rounded_corner"
             android:backgroundTint="#000080"
             android:text="Edit"
             android:textSize="0sp"
             app:cornerRadius="10dp"
             app:icon="@android:drawable/ic_menu_edit"
+            app:iconGravity="textStart"
+            app:iconSize="25dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.946"
@@ -82,10 +84,12 @@
 
         <Button
             android:id="@+id/deleteButton"
-            android:layout_width="47dp"
-            android:layout_height="27dp"
+            android:layout_width="43dp"
+            android:layout_height="36dp"
             android:background="@drawable/rounded_corner"
             app:icon="@android:drawable/ic_menu_delete"
+            app:iconGravity="textStart"
+            app:iconSize="30dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.946"

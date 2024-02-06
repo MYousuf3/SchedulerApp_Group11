@@ -13,6 +13,7 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -61,18 +62,6 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemVH> {
         holder.itemName.setText(list.get(position).getName());
         holder.date.setText(list.get(position).getDueDate());
         holder.checkBox.setChecked(list.get(position).isCompleted());
-        /*
-        if (list.get(position).getClass() == Exam.class) {
-            holder.constraintLayout.setBackgroundColor(Color.RED);
-        }
-        else if (list.get(position).getClass() == Assignment.class) {
-            holder.constraintLayout.setBackgroundColor(Color.BLUE);
-        }else {
-            holder.constraintLayout.setBackgroundColor(Color.GREEN);
-        }
-        if (list.get(position).getClass().equals(Exam.class)) {
-            holder.location.setText(((Exam)(list.get(position))).getLocation());
-        }*/
         holder.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -137,24 +126,33 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemVH> {
                     saveButton.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            Exam change = (Exam)list.get(position);
-                            change.setName(taskName.getText().toString());
-                            change.setCourse(courseName.getText().toString());
-                            change.setDueDate(Integer.parseInt(String.valueOf(taskYear.getText())),
-                                    Integer.parseInt(String.valueOf(taskMonth.getText())),
-                                    Integer.parseInt(String.valueOf(taskDay.getText())),
-                                    Integer.parseInt(String.valueOf(taskHour.getText())),
-                                    Integer.parseInt(String.valueOf(taskMinute.getText())));
-                            change.setLocation(taskLocation.getText().toString());
-                            change.setHour(Integer.parseInt(taskHour.getText().toString()));
-                            change.setMinute(Integer.parseInt(taskMinute.getText().toString()));
-                            change.setMonth(Integer.parseInt(taskMonth.getText().toString()));
-                            change.setDay(Integer.parseInt(taskDay.getText().toString()));
-                            change.setYear(Integer.parseInt(taskYear.getText().toString()));
-
-
-                            if (itemChangedListener != null) {
-                                itemChangedListener.itemChanged(list);
+                            if (String.valueOf(taskYear.getText()).equals("") ||
+                                    String.valueOf(taskMonth.getText()).equals("") ||
+                                    String.valueOf(taskDay.getText()).equals("") ||
+                                    String.valueOf(taskHour.getText()).equals("") ||
+                                    String.valueOf(taskMinute.getText()).equals("") ||
+                                    String.valueOf(taskName.getText()).equals("") ||
+                                    String.valueOf(courseName.getText()).equals("") ||
+                                    String.valueOf(taskLocation.getText()).equals("")) {
+                                Toast.makeText(viewContext, "Invalid Entry", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Exam change = (Exam) list.get(position);
+                                change.setName(taskName.getText().toString());
+                                change.setCourse(courseName.getText().toString());
+                                change.setDueDate(Integer.parseInt(String.valueOf(taskYear.getText())),
+                                        Integer.parseInt(String.valueOf(taskMonth.getText())),
+                                        Integer.parseInt(String.valueOf(taskDay.getText())),
+                                        Integer.parseInt(String.valueOf(taskHour.getText())),
+                                        Integer.parseInt(String.valueOf(taskMinute.getText())));
+                                change.setLocation(taskLocation.getText().toString());
+                                change.setHour(Integer.parseInt(taskHour.getText().toString()));
+                                change.setMinute(Integer.parseInt(taskMinute.getText().toString()));
+                                change.setMonth(Integer.parseInt(taskMonth.getText().toString()));
+                                change.setDay(Integer.parseInt(taskDay.getText().toString()));
+                                change.setYear(Integer.parseInt(taskYear.getText().toString()));
+                                if (itemChangedListener != null) {
+                                    itemChangedListener.itemChanged(list);
+                                }
                             }
                             dialog.dismiss();
                         }
@@ -177,15 +175,23 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemVH> {
                     saveButton.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            Assignment change = (Assignment) list.get(position);
-                            change.setName(taskName.getText().toString());
-                            change.setCourse(courseName.getText().toString());
-                            change.setDueDate(Integer.parseInt(String.valueOf(taskYear.getText())), Integer.parseInt(String.valueOf(taskMonth.getText())), Integer.parseInt(String.valueOf(taskDay.getText())));
-                            change.setMonth(Integer.parseInt(taskMonth.getText().toString()));
-                            change.setDay(Integer.parseInt(taskDay.getText().toString()));
-                            change.setYear(Integer.parseInt(taskYear.getText().toString()));
-                            if (itemChangedListener != null) {
-                                itemChangedListener.itemChanged(list);
+                            if (String.valueOf(taskYear.getText()).equals("") ||
+                                    String.valueOf(taskMonth.getText()).equals("") ||
+                                    String.valueOf(taskDay.getText()).equals("") ||
+                                    String.valueOf(taskName.getText()).equals("") ||
+                                    String.valueOf(courseName.getText()).equals("")) {
+                                Toast.makeText(viewContext, "Invalid Entry", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Assignment change = (Assignment) list.get(position);
+                                change.setName(taskName.getText().toString());
+                                change.setCourse(courseName.getText().toString());
+                                change.setDueDate(Integer.parseInt(String.valueOf(taskYear.getText())), Integer.parseInt(String.valueOf(taskMonth.getText())), Integer.parseInt(String.valueOf(taskDay.getText())));
+                                change.setMonth(Integer.parseInt(taskMonth.getText().toString()));
+                                change.setDay(Integer.parseInt(taskDay.getText().toString()));
+                                change.setYear(Integer.parseInt(taskYear.getText().toString()));
+                                if (itemChangedListener != null) {
+                                    itemChangedListener.itemChanged(list);
+                                }
                             }
                             dialog.dismiss();
                         }
@@ -207,19 +213,26 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemVH> {
                     saveButton.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            TodoItem change = list.get(position);
-                            change.setName(taskName.getText().toString());
-                            change.setDueDate(Integer.parseInt(String.valueOf(taskYear.getText())), Integer.parseInt(String.valueOf(taskMonth.getText())), Integer.parseInt(String.valueOf(taskDay.getText())));
-                            change.setMonth(Integer.parseInt(taskMonth.getText().toString()));
-                            change.setDay(Integer.parseInt(taskDay.getText().toString()));
-                            change.setYear(Integer.parseInt(taskYear.getText().toString()));
-                            if (itemChangedListener != null) {
-                                itemChangedListener.itemChanged(list);
+                            if (String.valueOf(taskYear.getText()).equals("") ||
+                                    String.valueOf(taskMonth.getText()).equals("") ||
+                                    String.valueOf(taskDay.getText()).equals("") ||
+                                    String.valueOf(taskName.getText()).equals("")) {
+                                Toast.makeText(viewContext, "Invalid Entry", Toast.LENGTH_SHORT).show();
+                            } else {
+                                TodoItem change = list.get(position);
+                                change.setName(taskName.getText().toString());
+                                change.setDueDate(Integer.parseInt(String.valueOf(taskYear.getText())), Integer.parseInt(String.valueOf(taskMonth.getText())), Integer.parseInt(String.valueOf(taskDay.getText())));
+                                change.setMonth(Integer.parseInt(taskMonth.getText().toString()));
+                                change.setDay(Integer.parseInt(taskDay.getText().toString()));
+                                change.setYear(Integer.parseInt(taskYear.getText().toString()));
+                                if (itemChangedListener != null) {
+                                    itemChangedListener.itemChanged(list);
+                                }
                             }
                             dialog.dismiss();
                         }
-                    });
-                }
+                        });
+                    }
                 dialog.show();
             }
         });

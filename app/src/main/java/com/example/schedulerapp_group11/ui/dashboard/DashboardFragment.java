@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -145,33 +146,61 @@ public class DashboardFragment extends Fragment implements ItemAdapter.ItemChang
                 @Override
                 public void onClick(View v) {
                     if (choice.equals("Exam")) {
-                        lm.addExam(
-                                Integer.parseInt(String.valueOf(taskYear.getText())),
-                                Integer.parseInt(String.valueOf(taskMonth.getText())),
-                                Integer.parseInt(String.valueOf(taskDay.getText())),
-                                Integer.parseInt(String.valueOf(taskHour.getText())),
-                                Integer.parseInt(String.valueOf(taskMinute.getText())),
-                                String.valueOf(taskName.getText()),
-                                String.valueOf(courseName.getText()),
-                                String.valueOf(taskLocation.getText())
-                                );
+                        if (String.valueOf(taskYear.getText()).equals("") ||
+                                String.valueOf(taskMonth.getText()).equals("") ||
+                                String.valueOf(taskDay.getText()).equals("") ||
+                                String.valueOf(taskHour.getText()).equals("") ||
+                                String.valueOf(taskMinute.getText()).equals("") ||
+                                String.valueOf(taskName.getText()).equals("") ||
+                                String.valueOf(courseName.getText()).equals("") ||
+                                String.valueOf(taskLocation.getText()).equals("")) {
+                            Toast.makeText(inflater.getContext(), "Invalid Entry", Toast.LENGTH_SHORT).show();
+                        } else {
+                            lm.addExam(
+                                    Integer.parseInt(String.valueOf(taskYear.getText())),
+                                    Integer.parseInt(String.valueOf(taskMonth.getText())),
+                                    Integer.parseInt(String.valueOf(taskDay.getText())),
+                                    Integer.parseInt(String.valueOf(taskHour.getText())),
+                                    Integer.parseInt(String.valueOf(taskMinute.getText())),
+                                    String.valueOf(taskName.getText()),
+                                    String.valueOf(courseName.getText()),
+                                    String.valueOf(taskLocation.getText())
+                            );
+                        }
                     } else if (choice.equals("Assignment")) {
-                        lm.addAssignment(
-                                Integer.parseInt(String.valueOf(taskYear.getText())),
-                                Integer.parseInt(String.valueOf(taskMonth.getText())),
-                                Integer.parseInt(String.valueOf(taskDay.getText())),
-                                23,
-                                59,
-                                String.valueOf(taskName.getText()),
-                                String.valueOf(courseName.getText())
-                        );
+                        if (String.valueOf(taskYear.getText()).equals("") ||
+                                String.valueOf(taskMonth.getText()).equals("") ||
+                                String.valueOf(taskDay.getText()).equals("") ||
+                                String.valueOf(taskHour.getText()).equals("") ||
+                                String.valueOf(taskMinute.getText()).equals("") ||
+                                String.valueOf(taskName.getText()).equals("") ||
+                                String.valueOf(courseName.getText()).equals("")) {
+                            Toast.makeText(inflater.getContext(), "Invalid Entry", Toast.LENGTH_SHORT).show();
+                        } else {
+                            lm.addAssignment(
+                                    Integer.parseInt(String.valueOf(taskYear.getText())),
+                                    Integer.parseInt(String.valueOf(taskMonth.getText())),
+                                    Integer.parseInt(String.valueOf(taskDay.getText())),
+                                    23,
+                                    59,
+                                    String.valueOf(taskName.getText()),
+                                    String.valueOf(courseName.getText())
+                            );
+                        }
                     } else {
-                        lm.addTask(
-                                Integer.parseInt(String.valueOf(taskYear.getText())),
-                                Integer.parseInt(String.valueOf(taskMonth.getText())),
-                                Integer.parseInt(String.valueOf(taskDay.getText())),
-                                String.valueOf(taskName.getText())
-                        );
+                        if (String.valueOf(taskYear.getText()).equals("") ||
+                                String.valueOf(taskMonth.getText()).equals("") ||
+                                String.valueOf(taskDay.getText()).equals("") ||
+                                String.valueOf(taskName.getText()).equals("")) {
+                            Toast.makeText(inflater.getContext(), "Invalid Entry", Toast.LENGTH_SHORT).show();
+                        } else {
+                            lm.addTask(
+                                    Integer.parseInt(String.valueOf(taskYear.getText())),
+                                    Integer.parseInt(String.valueOf(taskMonth.getText())),
+                                    Integer.parseInt(String.valueOf(taskDay.getText())),
+                                    String.valueOf(taskName.getText())
+                            );
+                        }
                     }
                     adapter.notifyDataSetChanged();
                     dialog.dismiss();

@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -67,8 +68,15 @@ public class HomeFragment extends Fragment implements CourseAdapter.OnDeleteList
             saveButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    courses.add(new Course(className.getText().toString(), prof.getText().toString(), dateText.getText().toString(), locText.getText().toString()));
-                    adapter.notifyItemInserted(courses.size() - 1);
+                    if (String.valueOf(className.getText()).equals("") ||
+                            String.valueOf(prof.getText()).equals("") ||
+                            String.valueOf(dateText.getText()).equals("") ||
+                            String.valueOf(locText.getText()).equals("")) {
+                        Toast.makeText(inflater.getContext(), "Invalid Entry", Toast.LENGTH_SHORT).show();
+                    } else {
+                        courses.add(new Course(className.getText().toString(), prof.getText().toString(), dateText.getText().toString(), locText.getText().toString()));
+                        adapter.notifyItemInserted(courses.size() - 1);
+                    }
                     dialog.dismiss();
                 }
             });

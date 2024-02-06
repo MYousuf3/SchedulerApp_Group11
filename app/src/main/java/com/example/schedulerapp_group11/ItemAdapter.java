@@ -102,33 +102,85 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemVH> {
             @Override
             public void onClick(View v) {
                 Dialog dialog = new Dialog(viewContext);
-                dialog.setContentView(R.layout.task);
-                Objects.requireNonNull(dialog.getWindow()).setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-                dialog.setCancelable(false);
-                Button saveButton = dialog.findViewById(R.id.saveButton);
-                EditText taskName = dialog.findViewById(R.id.taskView);
-                EditText courseName = dialog.findViewById(R.id.editCourseName);
-                EditText taskLocation = dialog.findViewById(R.id.editLocation);
-                EditText taskTime = dialog.findViewById(R.id.editDateTime);
-                EditText taskMonth = dialog.findViewById(R.id.editMonth);
-                EditText taskDay = dialog.findViewById(R.id.editDay);
-                EditText taskYear = dialog.findViewById(R.id.editYearText);
-                Spinner spinner = dialog.findViewById(R.id.spinner);
-                taskName.setText(list.get(position).getName());
-                courseName.setText(list.get(position).getCourse());
-                taskLocation.setText(list.get(position).getCourse());
-                saveButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        TodoItem change = list.get(position);
-                        change.setName(courseName.getText().toString());
-                        change.setDueDate(Integer.parseInt(String.valueOf(taskYear.getText())), Integer.parseInt(String.valueOf(taskMonth.getText())), Integer.parseInt(String.valueOf(taskDay.getText())));
-                        if (itemChangedListener != null) {
-                            itemChangedListener.itemChanged(list);
+                if (list.get(position).getClass() == Exam.class) {
+                    dialog.setContentView(R.layout.examedit);
+                    Objects.requireNonNull(dialog.getWindow()).setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                    dialog.setCancelable(false);
+                    Button saveButton = dialog.findViewById(R.id.saveButton);
+                    EditText taskName = dialog.findViewById(R.id.taskView);
+                    EditText courseName = dialog.findViewById(R.id.editCourseName);
+                    EditText taskLocation = dialog.findViewById(R.id.editLocation);
+                    EditText taskTime = dialog.findViewById(R.id.editDateTime);
+                    EditText taskMonth = dialog.findViewById(R.id.editMonth);
+                    EditText taskDay = dialog.findViewById(R.id.editDay);
+                    EditText taskYear = dialog.findViewById(R.id.editYearText);
+                    taskName.setText(list.get(position).getName());
+                    courseName.setText(list.get(position).getCourse());
+                    taskLocation.setText(list.get(position).getCourse());
+                    saveButton.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Exam change = (Exam)list.get(position);
+                            change.setName(taskName.getText().toString());
+                            change.setCourse(courseName.getText().toString());
+                            change.setDueDate(Integer.parseInt(String.valueOf(taskYear.getText())), Integer.parseInt(String.valueOf(taskMonth.getText())), Integer.parseInt(String.valueOf(taskDay.getText())));
+                            change.setLocation(taskLocation.getText().toString());
+                            if (itemChangedListener != null) {
+                                itemChangedListener.itemChanged(list);
+                            }
+                            dialog.dismiss();
                         }
-                        dialog.dismiss();
-                    }
-                });
+                    });
+                } else if (list.get(position).getClass() == Assignment.class) {
+                    Objects.requireNonNull(dialog.getWindow()).setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                    dialog.setContentView(R.layout.assignmentedit);
+                    dialog.setCancelable(false);
+                    Button saveButton = dialog.findViewById(R.id.saveButton);
+                    EditText taskName = dialog.findViewById(R.id.taskView);
+                    EditText courseName = dialog.findViewById(R.id.editCourseName);
+                    EditText taskMonth = dialog.findViewById(R.id.editMonth);
+                    EditText taskDay = dialog.findViewById(R.id.editDay);
+                    EditText taskYear = dialog.findViewById(R.id.editYearText);
+                    taskName.setText(list.get(position).getName());
+                    courseName.setText(list.get(position).getCourse());
+                    saveButton.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Assignment change = (Assignment) list.get(position);
+                            change.setName(taskName.getText().toString());
+                            change.setCourse(courseName.getText().toString());
+                            change.setDueDate(Integer.parseInt(String.valueOf(taskYear.getText())), Integer.parseInt(String.valueOf(taskMonth.getText())), Integer.parseInt(String.valueOf(taskDay.getText())));
+                            if (itemChangedListener != null) {
+                                itemChangedListener.itemChanged(list);
+                            }
+                            dialog.dismiss();
+                        }
+                    });
+                } else {
+                    Objects.requireNonNull(dialog.getWindow()).setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                    dialog.setContentView(R.layout.taskedit);
+                    dialog.setCancelable(false);
+                    Button saveButton = dialog.findViewById(R.id.saveButton);
+                    EditText taskName = dialog.findViewById(R.id.taskView);
+                    EditText taskMonth = dialog.findViewById(R.id.editMonth);
+                    EditText taskDay = dialog.findViewById(R.id.editDay);
+                    EditText taskYear = dialog.findViewById(R.id.editYearText);
+                    taskName.setText(list.get(position).getName());
+
+                    saveButton.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            TodoItem change = list.get(position);
+                            change.setName(taskName.getText().toString());
+                            change.setDueDate(Integer.parseInt(String.valueOf(taskYear.getText())), Integer.parseInt(String.valueOf(taskMonth.getText())), Integer.parseInt(String.valueOf(taskDay.getText())));
+
+                            if (itemChangedListener != null) {
+                                itemChangedListener.itemChanged(list);
+                            }
+                            dialog.dismiss();
+                        }
+                    });
+                }
                 dialog.show();
             }
         });

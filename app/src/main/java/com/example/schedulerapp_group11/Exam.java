@@ -30,9 +30,11 @@ public class Exam extends TodoItem {
         this.location = loc;
     }
 
+    /*
     public static Comparator<Exam> sortByCourse() {
         return (a, b) -> (a.courseName.compareTo(b.courseName));
     }
+     */
 
     @Override
     public boolean equals (Object it) {

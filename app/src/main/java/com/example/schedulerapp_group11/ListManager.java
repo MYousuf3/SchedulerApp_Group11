@@ -56,7 +56,7 @@ public class ListManager {
     }
 
     public ArrayList<TodoItem> getCourseRelated() {
-        ArrayList<TodoItem> temp = new ArrayList<>();
+        // ArrayList<TodoItem> temp = new ArrayList<>();
         for (int i = 0; i < backing.size(); i++) {
             if (backing.get(i).getClass() != Assignment.class && backing.get(i).getClass() != Exam.class) {
                 unused.add(backing.get(i));
@@ -65,11 +65,7 @@ public class ListManager {
             }
         }
         // Collections.sort(temp, (a, b) -> a.getCourse().compare(b.getCourse()));
-        temp.sort(new Comparator<TodoItem>() {
-            public int compare(TodoItem t1, TodoItem t2) {
-                return t1.getCourse().compareTo(t1.getCourse());
-            }
-        });
+        backing.sort((t1, t2) -> t1.getCourse().compareTo(t2.getCourse()));
         return backing;
     }
     public ArrayList<TodoItem> revert() {

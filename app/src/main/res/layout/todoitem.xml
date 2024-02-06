@@ -65,8 +65,8 @@
 
         <Button
             android:id="@+id/editButton"
-            android:layout_width="67dp"
-            android:layout_height="39dp"
+            android:layout_width="44dp"
+            android:layout_height="27dp"
             android:background="@drawable/rounded_corner"
             android:backgroundTint="#000080"
             android:text="Edit"
@@ -75,23 +75,23 @@
             app:icon="@android:drawable/ic_menu_edit"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.947"
+            app:layout_constraintHorizontal_bias="0.946"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.039" />
+            app:layout_constraintVertical_bias="0.036" />
 
         <Button
             android:id="@+id/deleteButton"
-            android:layout_width="67dp"
-            android:layout_height="39dp"
+            android:layout_width="47dp"
+            android:layout_height="27dp"
             android:background="@drawable/rounded_corner"
             app:icon="@android:drawable/ic_menu_delete"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.947"
+            app:layout_constraintHorizontal_bias="0.946"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editButton"
-            app:layout_constraintVertical_bias="0.827" />
+            app:layout_constraintVertical_bias="0.757" />
 
         <CheckBox
             android:id="@+id/completedBox"

@@ -73,11 +73,11 @@ public class TodoItem {
     }
 
     public static Comparator<TodoItem> earlyFirst() {
-        return (a, b) -> (a.daysTillDue() - b.daysTillDue());
+        return (a, b) -> (int) TimeUnit.DAYS.convert((a.getTime() - b.getTime()), TimeUnit.MILLISECONDS);
     }
 
     public static Comparator<TodoItem> laterFirst() {
-        return (a, b) -> (b.daysTillDue() - a.daysTillDue());
+        return (a, b) -> (int) TimeUnit.DAYS.convert((b.getTime() - a.getTime()), TimeUnit.MILLISECONDS);
     }
 
     @Override

@@ -22,9 +22,11 @@ public class Assignment extends TodoItem {
         this.courseName = className;
     }
 
+    /*
     public static Comparator<Assignment> sortByCourse() {
         return (a, b) -> (a.courseName.compareTo(b.courseName));
     }
+     */
 
     public boolean equals (Object it) {
         if (it == null || !this.getClass().equals(it.getClass())) {

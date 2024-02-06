@@ -9,7 +9,7 @@
     tools:context=".ui.dashboard.DashboardFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView01"
+        android:id="@+id/recyclerViewList"
         android:layout_width="405dp"
         android:layout_height="598dp"
 
@@ -30,8 +30,8 @@
         android:focusable="true"
         android:src="@android:drawable/ic_input_add"
         android:tint="#FA2424"
-        app:layout_constraintBottom_toBottomOf="@+id/recyclerView01"
-        app:layout_constraintEnd_toEndOf="@+id/recyclerView01" />
+        app:layout_constraintBottom_toBottomOf="@+id/recyclerViewList"
+        app:layout_constraintEnd_toEndOf="@+id/recyclerViewList" />
 
     <TextView
         android:id="@+id/textView"

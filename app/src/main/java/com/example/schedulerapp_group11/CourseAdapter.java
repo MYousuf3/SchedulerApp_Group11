@@ -45,11 +45,14 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseVH> {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.course, parent, false);
         viewContext = parent.getContext();
+        System.out.println("hi");
+
         return new CourseVH(view).linkAdapter(this);
     }
 
     @Override
     public void onBindViewHolder(@NonNull CourseVH holder, @SuppressLint("RecyclerView") int position) {
+        System.out.println("hi");
         holder.courseName.setText(courses.get(position).getCourseName());
         holder.professor.setText(courses.get(position).getProf());
         holder.days.setText(courses.get(position).getTime());
@@ -135,6 +138,7 @@ class CourseVH extends RecyclerView.ViewHolder{
 
     public CourseVH(@NonNull View itemView) {
         super(itemView);
+        System.out.println("hi");
         courseName = itemView.findViewById(R.id.textItem);
         professor = itemView.findViewById(R.id.textCourse);
         days = itemView.findViewById(R.id.textDate);

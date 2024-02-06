@@ -1,12 +1,15 @@
 package com.example.schedulerapp_group11.ui.dashboard;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -15,8 +18,8 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.schedulerapp_group11.Course;
-import com.example.schedulerapp_group11.CourseAdapter;
+import com.example.schedulerapp_group11.Assignment;
+import com.example.schedulerapp_group11.Exam;
 import com.example.schedulerapp_group11.ItemAdapter;
 import com.example.schedulerapp_group11.R;
 import com.example.schedulerapp_group11.TodoItem;
@@ -30,9 +33,10 @@ public class DashboardFragment extends Fragment implements ItemAdapter.ItemChang
 
 
     private FragmentDashboardBinding binding;
-    private ArrayList<TodoItem> list;
+    ArrayList<TodoItem> list;
     DashboardViewModel dashboardViewModel;
     ItemAdapter adapter;
+    String choice;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -46,7 +50,7 @@ public class DashboardFragment extends Fragment implements ItemAdapter.ItemChang
         if (dashboardViewModel.getsSavedItems() != null) {
             list = dashboardViewModel.getsSavedItems();
         }
-        RecyclerView recyclerView = binding.recyclerView01;
+        RecyclerView recyclerView = binding.recyclerViewList;
         recyclerView.setLayoutManager(new LinearLayoutManager(inflater.getContext(), LinearLayoutManager.VERTICAL, false));
         adapter = new ItemAdapter(list);
         adapter.setOnDeleteListener(this);
@@ -54,28 +58,74 @@ public class DashboardFragment extends Fragment implements ItemAdapter.ItemChang
         recyclerView.setAdapter(adapter);
 
         FloatingActionButton floatingButton = binding.floatingActionButton;
-        floatingButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Dialog dialog = new Dialog(inflater.getContext());
-                dialog.setContentView(R.layout.task);
-                Objects.requireNonNull(dialog.getWindow()).setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-                dialog.setCancelable(false);
-                Button saveButton = dialog.findViewById(R.id.saveButton);
-                //EditText taskName = dialog.findViewById(R.id.edit);
-                EditText courseName = dialog.findViewById(R.id.editCourseName);
-                EditText dateText = dialog.findViewById(R.id.editDateTime);
-                EditText locText = dialog.findViewById(R.id.editLocation);
-                saveButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        //list.add(new TodoItem(taskName.getText().toString(), prof.getText().toString(), dateText.getText().toString(), locText.getText().toString()));
-                        //adapter.notifyItemInserted(list.size() - 1);
-                        dialog.dismiss();
+        floatingButton.setOnClickListener(view -> {
+
+            Dialog dialog = new Dialog(inflater.getContext());
+            dialog.setContentView(R.layout.task);
+            Objects.requireNonNull(dialog.getWindow()).setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            dialog.setCancelable(false);
+            Button saveButton = dialog.findViewById(R.id.saveButton);
+            EditText taskName = dialog.findViewById(R.id.taskView);
+            EditText courseName = dialog.findViewById(R.id.editCourseName);
+            EditText taskLocation = dialog.findViewById(R.id.editLocation);
+            EditText taskTime = dialog.findViewById(R.id.editDateTime);
+            EditText taskMonth = dialog.findViewById(R.id.editMonth);
+            EditText taskDay = dialog.findViewById(R.id.editDay);
+            EditText taskYear = dialog.findViewById(R.id.editYearText);
+            Spinner spinner = dialog.findViewById(R.id.spinner);
+            choice = "";
+            spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                    choice = (String) spinner.getItemAtPosition(position);
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+
+                }
+            });
+
+            saveButton.setOnClickListener(new View.OnClickListener() {
+                @SuppressLint("NotifyDataSetChanged")
+                @Override
+                public void onClick(View v) {
+                    if (choice.equals("Exam")) {
+                        list.add(new Exam(
+                                Integer.parseInt(String.valueOf(taskYear.getText())),
+                                Integer.parseInt(String.valueOf(taskMonth.getText())),
+                                Integer.parseInt(String.valueOf(taskDay.getText())),
+                                23,
+                                59,
+                                String.valueOf(taskName.getText()),
+                                String.valueOf(courseName.getText()),
+                                String.valueOf(taskLocation.getText()),
+                                false));
+                    } else if (choice.equals("Assignment")) {
+                        list.add(new Assignment(
+                                Integer.parseInt(String.valueOf(taskYear.getText())),
+                                Integer.parseInt(String.valueOf(taskMonth.getText())),
+                                Integer.parseInt(String.valueOf(taskDay.getText())),
+                                23,
+                                59,
+                                String.valueOf(taskName.getText()),
+                                String.valueOf(courseName.getText()),
+                                false
+                        ));
+                    } else {
+                        list.add(new TodoItem(
+                                Integer.parseInt(String.valueOf(taskYear.getText())),
+                                Integer.parseInt(String.valueOf(taskMonth.getText())),
+                                Integer.parseInt(String.valueOf(taskDay.getText())),
+                                String.valueOf(taskName.getText()),
+                                false
+                                ));
                     }
-                });
-                dialog.show();
-            }
+                    adapter.notifyDataSetChanged();
+                    dialog.dismiss();
+                }
+            });
+            dialog.show();
         });
         return root;
     }
@@ -83,16 +133,22 @@ public class DashboardFragment extends Fragment implements ItemAdapter.ItemChang
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+        dashboardViewModel.setSavedItems(list);
         binding = null;
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     @Override
     public void onDelete(int position) {
-
+        System.out.println("tried to remove");
+        list.remove(position);
+        adapter.notifyDataSetChanged();
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     @Override
-    public void itemChanged(ArrayList<TodoItem> list) {
-
+    public void itemChanged(ArrayList<TodoItem> newList) {
+        list = newList;
+        adapter.notifyDataSetChanged();
     }
 }

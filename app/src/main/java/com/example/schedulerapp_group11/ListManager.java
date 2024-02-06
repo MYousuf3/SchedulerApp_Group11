@@ -56,6 +56,58 @@ public class ListManager {
         return backing;
     }
 
+    public ArrayList<TodoItem> getComplete() {
+        ArrayList<TodoItem> temp = new ArrayList<>();
+        for (int i = 0; i < backing.size(); i++) {
+            if (!backing.get(i).isCompleted()) {
+                unused.add(backing.get(i));
+                backing.remove(i);
+                i--;
+            }
+        }
+
+        return backing;
+    }
+
+    public ArrayList<TodoItem> getAssignments() {
+        ArrayList<TodoItem> temp = new ArrayList<>();
+        for (int i = 0; i < backing.size(); i++) {
+            if (backing.get(i).getClass() != Assignment.class) {
+                unused.add(backing.get(i));
+                backing.remove(i);
+                i--;
+            }
+        }
+
+        return backing;
+    }
+
+    public ArrayList<TodoItem> getExams() {
+        ArrayList<TodoItem> temp = new ArrayList<>();
+        for (int i = 0; i < backing.size(); i++) {
+            if (backing.get(i).getClass() != Exam.class) {
+                unused.add(backing.get(i));
+                backing.remove(i);
+                i--;
+            }
+        }
+
+        return backing;
+    }
+
+    public ArrayList<TodoItem> getTasks() {
+        ArrayList<TodoItem> temp = new ArrayList<>();
+        for (int i = 0; i < backing.size(); i++) {
+            if (backing.get(i).getClass() == Exam.class || backing.get(i).getClass() == Assignment.class) {
+                unused.add(backing.get(i));
+                backing.remove(i);
+                i--;
+            }
+        }
+
+        return backing;
+    }
+
     public ArrayList<TodoItem> getCourseRelated() {
         revert();
         // ArrayList<TodoItem> temp = new ArrayList<>();

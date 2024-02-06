@@ -83,6 +83,26 @@ public class DashboardFragment extends Fragment implements ItemAdapter.ItemChang
                     adapter.notifyDataSetChanged();
                     recyclerView.setAdapter(adapter);
                 }
+                if (filterChoice.equals("Tasks")) {
+                    list = lm.getTasks();
+                    adapter.notifyDataSetChanged();
+                    recyclerView.setAdapter(adapter);
+                }
+                if (filterChoice.equals("Assignments")) {
+                    list = lm.getAssignments();
+                    adapter.notifyDataSetChanged();
+                    recyclerView.setAdapter(adapter);
+                }
+                if (filterChoice.equals("Exams")) {
+                    list = lm.getExams();
+                    adapter.notifyDataSetChanged();
+                    recyclerView.setAdapter(adapter);
+                }
+                if (filterChoice.equals("Complete")) {
+                    list = lm.getComplete();
+                    adapter.notifyDataSetChanged();
+                    recyclerView.setAdapter(adapter);
+                }
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {

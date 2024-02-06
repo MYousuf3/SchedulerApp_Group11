@@ -65,7 +65,7 @@ public class ListManager {
             }
         }
         // Collections.sort(temp, (a, b) -> a.getCourse().compare(b.getCourse()));
-        backing.sort((t1, t2) -> t1.getCourse().compareTo(t1.getCourse()));
+        backing.sort((t1, t2) -> t1.getCourse().compareTo(t2.getCourse()));
         return backing;
     }
     public ArrayList<TodoItem> revert() {

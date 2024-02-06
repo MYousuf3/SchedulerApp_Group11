@@ -37,7 +37,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
         android:ems="10"
-        android:hint="Time"
+        android:hint="Time(if applicable)"
         android:inputType="text"
         app:layout_constraintStart_toStartOf="@+id/editCourseName"
         app:layout_constraintTop_toBottomOf="@+id/editCourseName" />

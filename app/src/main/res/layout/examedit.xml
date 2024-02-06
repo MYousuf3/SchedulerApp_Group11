@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -31,11 +30,34 @@
         app:layout_constraintTop_toBottomOf="@+id/taskView" />
 
 
+    <EditText
+        android:id="@+id/editDateTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:ems="10"
+        android:hint="Time"
+        android:inputType="text"
+        app:layout_constraintStart_toStartOf="@+id/editCourseName"
+        app:layout_constraintTop_toBottomOf="@+id/editCourseName" />
+
+    <EditText
+        android:id="@+id/editLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:ems="10"
+        android:hint="Location (if applicable)"
+        android:inputType="text"
+        app:layout_constraintStart_toStartOf="@+id/editDateTime"
+        app:layout_constraintTop_toBottomOf="@+id/editDateTime" />
+
+
     <Button
         android:id="@+id/saveButton"
         android:layout_width="62dp"
         android:layout_height="62dp"
-        android:layout_marginBottom="420dp"
+        android:layout_marginBottom="292dp"
         android:background="@drawable/rounded_corner"
         app:icon="@android:drawable/ic_menu_save"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -44,35 +66,13 @@
         app:layout_constraintStart_toStartOf="@+id/taskView" />
 
     <EditText
-        android:id="@+id/editDay"
-        android:layout_width="39dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="32dp"
-        android:ems="10"
-        android:hint="dd"
-        android:inputType="text"
-        app:layout_constraintStart_toEndOf="@+id/slash1"
-        app:layout_constraintTop_toBottomOf="@+id/editCourseName" />
-
-    <EditText
-        android:id="@+id/editYearText"
-        android:layout_width="48dp"
-        android:layout_height="49dp"
-        android:layout_marginTop="28dp"
-        android:ems="10"
-        android:hint="yyyy"
-        android:inputType="text"
-        app:layout_constraintStart_toEndOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/editCourseName" />
-
-    <EditText
         android:id="@+id/editMonth"
         android:layout_width="39dp"
         android:layout_height="45dp"
-        android:layout_marginTop="32dp"
         android:ems="10"
         android:hint="mm"
         android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@+id/editDateTime"
         app:layout_constraintStart_toStartOf="@+id/editCourseName"
         app:layout_constraintTop_toBottomOf="@+id/editCourseName" />
 
@@ -80,21 +80,42 @@
         android:id="@+id/slash1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
         android:text="/"
         android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/editDateTime"
         app:layout_constraintStart_toEndOf="@+id/editMonth"
+        app:layout_constraintTop_toBottomOf="@+id/editCourseName" />
+
+    <EditText
+        android:id="@+id/editDay"
+        android:layout_width="39dp"
+        android:layout_height="45dp"
+        android:ems="10"
+        android:hint="dd"
+        android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@+id/editDateTime"
+        app:layout_constraintStart_toEndOf="@+id/slash1"
         app:layout_constraintTop_toBottomOf="@+id/editCourseName" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
         android:text="/"
         android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/editDateTime"
         app:layout_constraintStart_toEndOf="@+id/editDay"
         app:layout_constraintTop_toBottomOf="@+id/editCourseName" />
 
+    <EditText
+        android:id="@+id/editYearText"
+        android:layout_width="48dp"
+        android:layout_height="49dp"
+        android:ems="10"
+        android:hint="yyyy"
+        android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@+id/editDateTime"
+        app:layout_constraintStart_toEndOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/editCourseName" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

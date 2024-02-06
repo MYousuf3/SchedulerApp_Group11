@@ -32,6 +32,9 @@ public class TodoItem {
     public TodoItem(int year, int month, int date, int hour, int minute, String m) {
         Calendar cal = Calendar.getInstance();
         cal.set(year, month - 1, date, hour, minute);
+        this.year = year;
+        this.month = month;
+        this.day = date;
         this.hour = hour;
         this.minute = minute;
         due = cal.getTime();

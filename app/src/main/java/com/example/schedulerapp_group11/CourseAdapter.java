@@ -55,9 +55,9 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseVH> {
     public void onBindViewHolder(@NonNull CourseVH holder, @SuppressLint("RecyclerView") int position) {
         System.out.println("hi");
         holder.courseName.setText(courses.get(position).getCourseName());
-        holder.professor.setText(courses.get(position).getProf());
-        holder.days.setText(courses.get(position).getTime());
-        holder.location.setText(courses.get(position).getRoom());
+        holder.professor.setText("Professor: " + courses.get(position).getProf());
+        holder.days.setText("Meeting times: " + courses.get(position).getTime());
+        holder.location.setText("Room: " + courses.get(position).getRoom());
         holder.delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

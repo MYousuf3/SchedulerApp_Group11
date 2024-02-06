@@ -58,10 +58,13 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemVH> {
 
     @Override
     public void onBindViewHolder(@NonNull ItemVH holder, @SuppressLint("RecyclerView") int position) {
-        holder.courseName.setText(list.get(position).getCourse());
+        holder.courseName.setText("Course: " + list.get(position).getCourse());
         holder.itemName.setText(list.get(position).getName());
-        holder.date.setText(list.get(position).getDueDate());
+        holder.date.setText("Date: " + list.get(position).getDueDate());
         holder.checkBox.setChecked(list.get(position).isCompleted());
+        if (list.get(position).getClass() == Exam.class) {
+            holder.location.setText("Location: " + ((Exam)list.get(position)).getLocation());
+        }
         holder.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
